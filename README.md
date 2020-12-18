@@ -30,7 +30,7 @@ Well there is this [site](https://caniuse.com/), in which we can type in for exa
 
  <hr>
 
-# JS building blocks
+# 🧱 JS building blocks
 
 ## Primitive Types
 
@@ -42,7 +42,7 @@ Well there is this [site](https://caniuse.com/), in which we can type in for exa
  - Symbol
  - BigInt
 
-## Numbers in JS 
+## 🔢 Numbers in JS 
 
  - JavaScript has ONE Number type
  - Positive numbers,
@@ -76,7 +76,7 @@ NaN is a numeric value that represents something that is not a number.
 
 <hr>
 
-# Variables
+# 📦 Variables
 
 > Variables are like `labeled jars` for a value in JavaScript
 > We can store a value and give it a name, so that we can...
@@ -85,7 +85,7 @@ NaN is a numeric value that represents something that is not a number.
  - use it
  - or change it later on.
 
-## Basic Syntax 
+## 🗒️ Basic Syntax 
 
 ```javascript
 let someName = value;
@@ -114,7 +114,7 @@ counter = counter + 1;
 counter += 1; 
 ```
 
-## CONST 
+## 🛑 CONST 
 
 > `const` works just like `let`, except you **CANNOT** change the value
 
@@ -133,7 +133,7 @@ var tripDistance = 7.4;
 
 <hr>
 
-## Booleans 
+## Booleans 0️⃣1️⃣
 
 > Booleans are simply `True` or `False` values, Yes or No. 1 or 0.
 
@@ -161,7 +161,7 @@ numDonuts = 22; // back to number :)
 
 <hr>
 
-# Strings
+# 📜 Strings
 
 In JavaScript string are pieces of text, or string of characters. 
 
@@ -304,3 +304,56 @@ annoyingLaugh.replace("teehee", "haha"); // "haha so funny! teehee!"
 // [!] Notice that it only replaces the first instance.
 ```
 
+## ❓Quiz Time! 
+
+ - *What is the value of `age`?*
+
+```javascript
+const age = "5" + "4";
+```
+
+ - *What does this evaluate to?*
+
+```javascript
+"pecan pie"[7];
+```
+
+ - *What does this evaluate to?*
+
+```javascript
+"PUP"[3];
+```
+
+ - *What is the value of song?*
+
+```javascript
+let song = "london calling";
+song.toUpperCase();
+```
+
+ - *What is the value of the cleanedInput variable?*
+
+```javascript
+let userInput = "  TODD@gmail.com";
+let cleanedInput = userInput.trim().toLowerCase();
+```
+
+ - *What is the value of index?*
+
+```javascript
+let park = 'Yellowstone';
+const index = park.indexOf('Stone');
+```
+
+ - *What is the value of index?*
+
+```javascript
+let yell = "GO AWAY!!!";
+let index = yell.indexOf('!');
+```
+
+ - *What does this evaluate to?*
+
+```javascript
+"GARBAGE!".slice(2).replace("B", '');
+```
