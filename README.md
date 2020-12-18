@@ -357,3 +357,39 @@ let index = yell.indexOf('!');
 ```javascript
 "GARBAGE!".slice(2).replace("B", '');
 ```
+
+## String Escapes 
+
+ 1. \n - newline
+ 2. \' - single quote
+ 3. \" - double quote
+ 4. \\ - backslash
+
+Let's say I want to have a single quote inside a string in JS. 
+For example: 
+
+```javascript
+'he said I aint happy' // If I go and add a ' at ain't it will not work. 
+
+// to make it work properly we have to use the single quote character escape like this: 
+'he said I ain\'t happy' // and we'll get our result as expected.
+```
+
+We can find more information about escape characters on the mdn docs ~> [link](https://developer.cdn.mozilla.net/nl/docs/Web/JavaScript/Reference/Global_Objects/String#Escape_notation)
+
+
+## String Template Literals 
+
+Template literals are strings that allow embedded expressions, which will be evaluated and then turned into a resulting string. 
+
+ - Example: 
+
+```javascript
+`I counted ${3 + 4} sheep`; // Output: "I counted 7 sheep"
+```
+‼️ <span style="color:red"><b>IMPORTANT NOTICE</b></span><br>
+**In string template Literals we use BACK-TICKS `` and NOT SINGLE QUOTES**
+ - <p>`I am a template literal`</p>
+
+ - *The back-tick key is usually above the tab key*
+
