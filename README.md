@@ -387,7 +387,7 @@ Template literals are strings that allow embedded expressions, which will be eva
 ```javascript
 `I counted ${3 + 4} sheep`; // Output: "I counted 7 sheep"
 ```
-‼️ <span style="color: red, font-weight: bold;">IMPORTANT NOTICE</span><br>
+‼️ <span style="color:red;">IMPORTANT NOTICE</span><br>
 **In string template Literals we use BACK-TICKS `` and NOT SINGLE QUOTES**
  - <p>`I am a template literal`</p>
 
