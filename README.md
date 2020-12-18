@@ -387,9 +387,27 @@ Template literals are strings that allow embedded expressions, which will be eva
 ```javascript
 `I counted ${3 + 4} sheep`; // Output: "I counted 7 sheep"
 ```
-‼️ <span style="color:red;">IMPORTANT NOTICE</span><br>
+‼️ **IMPORTANT NOTICE**<br>
 **In string template Literals we use BACK-TICKS `` and NOT SINGLE QUOTES**
  - <p>`I am a template literal`</p>
 
  - *The back-tick key is usually above the tab key*
 
+ - Another example: 
+
+```javascript
+let userName = "Ziggy31";
+`Welcome back, ${userName}` // "Welcome back, Ziggy31"
+
+`GAME OVER ${userName.toUpperCase()}` // "GAME OVER ZIGGY31"
+```
+
+ - Yet another example: 
+
+```javascript
+let item = "cucumbers;
+let price = 1.99;
+let quantity = 4;
+
+`You bought ${quantity} ${item}, total price is: $${price * quantity}`; // Output: "You bought 4 cucumbers, total price is: $7.96"
+```
