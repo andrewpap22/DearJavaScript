@@ -1,8 +1,9 @@
 # JavaScript Programming Language 
 
  - This one will be a JavaScript `Notebook` covering some basic features of the JavaScript programming language and some more **advanced** ones.
-
-<hr>
+ 
+ [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](http://goldsborough.mit-license.org)
+ [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 
 # Terminology 
 ## What's the difference???
