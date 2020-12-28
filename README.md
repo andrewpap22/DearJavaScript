@@ -411,3 +411,77 @@ let quantity = 4;
 
 `You bought ${quantity} ${item}, total price is: $${price * quantity}`; // Output: "You bought 4 cucumbers, total price is: $7.96"
 ```
+
+## Null & Undefined
+
+ - `Null`
+  - Intentional absence of any value
+  - Must be assigned
+
+ - `Undefined`
+  - Variables that do not have an assigned value are undefined.
+
+Example:
+
+```javascript
+// No one is logged in yet...
+let loggedInUser = null; // value is explicitly nothing.
+
+// A user logs in...
+loggedInUser = "Alan Rickman";
+```
+
+```javascript
+let bla; 
+// if we console.log bla we will get that it is undefined.
+```
+
+Both null and undefined kinda represent the same thing. The difference is that when we declare a variable and we don't initialize it, it's value is undefined, whereas with the null, we do it on purpose. We set a variable to null (i.e. the variables equals nothing) so that we know it's an 'empty' variable that we can use for whatever purposes we would like to, later on...
+
+## The Math Object. 
+
+Contains properties and methods for mathematical constants and functions.
+
+ - Example: 
+
+Let's say we want to generate random numbers between 1 and 10
+
+```javascript
+const step1 = Math.random();
+// 0.5912342314214210214
+const step2 = step1 * 10;
+// 5.5912342314214210214
+const step3 = Math.floor(step2);
+// 5
+const step4 = step3 + 1;
+// 6
+
+/* All together in 1 line */
+
+const random = Math.floor(Math.random() * 10) + 1;
+```
+
+## Type of operator
+
+```javascript
+typeof "hello"; // string
+typeof 2; // number
+typeof true; // boolean
+```
+
+## parseInt & parseFloat
+
+Use to parse strings into numbers, but watch out for NaN! 
+
+```javascript
+parseInt("24"); // 24
+parseInt("24,1234"); // 24
+parseInt("24dayslater"); // 24
+
+parseFloat("24.987") // 24.987
+parseFloat("7") // 7
+parseFloat("I ate 3 shrimps") // NaN (not a number)
+```
+
+# Boolean Logic
+
