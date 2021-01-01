@@ -485,3 +485,171 @@ parseFloat("I ate 3 shrimps") // NaN (not a number)
 
 # Boolean Logic
 
+## Comparisons 
+
+### Comparison operators 
+
+```javascript
+> // greater than
+< // smaller than
+>= // greater or equal to
+<= // smaller or equal to
+== // equal to
+!= // not equal to
+=== // strict equality
+!== // strict non-equality
+```
+
+ - **`All comparison operators return a boolean in JavaScript (true or false)`**
+
+For example: 
+
+```javascript
+-2 > 1 // false
+10 < 999 // true
+"hello".length >= "hello!".length // false
+```
+
+We can also compare strings with the comparison operators. The thing to note here is that, we're not comparing in alphabetical order, but we're comparing the corresponding Unicode values of each and every character we're trying to compare. More information on what are the Unicode values of characters / strings can be found [here!](https://en.wikipedia.org/wiki/Unicode)
+
+### Double equals (==) VS triple equals (===)
+
+#### Double equals (==)
+
+> Usually referred to as the equality operator. 
+- It checks for equality of value but not equality of type.
+- It coerces both values to the same type and then compares them. 
+- This can lead to some unexpected results! 
+
+Examples:
+---------
+
+```javascript
+4 == 4 // true
+'A' == 'A' // true 
+false == false // true 
+
+7 == '7' // true
+```
+
+The last one, compares the integer 7 to the character '7' and it returns us true. But these 2 are obviously not equal and the programmer didn't want them to be true as well. But remember! Double equals will not see the types of comparison and it will try to convert both sides of comparison to the same type and thus return us true in that particular case.
+
+- Some more examples: 
+
+```javascript
+0 == ""; // true
+
+0 == false; // true 
+
+null == undefined; // true
+```
+
+Now, why the 3 above comparisons are true? 
+Because, javaScript behind the scenes will translate and consider the programmer when making the particular comparisons to have meant for example that when he compares 0 to false he actually translates in his mind 0 to be false as that's the case usually and that's what exactly javaScript is trying to do as well behind the scenes. Same goes for the other 2 comparisons, but this might not always be the case. Sometimes we might want 0 to mean the integer 0 and not false and that's exactly the reasons why we have and can use both of them as different things. So based on the above logic that's why is almost always 99% of the time better to use triple equals (===) and strict not equals as well (!==) and completely ignore == and != as we're mentioning below. 
+
+### Triple equals (===)
+
+Checks for equality of value AND the type. 
+
+```javascript
+5 === 5; // true
+1 === 2; // false
+2 === '2'; // false 
+false === 0; // false
+```
+
+Same logic applies for != and !== 
+
+```javascript
+10 != '10'; // false (but probably we want true, 10 and '10' to be different things)
+
+10 !== '10'; // true
+```
+
+> Rule of thumb: 99% of the time we're going and must use the triple equals === and the strict not equals !== operators. As mentioned above it's best practice to care about the type when doing comparisons. 
+
+Why the above statement holds? 
+
+- Example:
+
+```javascript
+// We have the following variable: 
+
+let isTheUserLoggedIn = false; 
+
+// Now we're comparing: 
+
+isTheUserLoggedIn == false; // We're getting true
+
+// Now let's say someone writes it this way: 
+
+isTheUserLoggedIn = 0; 
+
+// And then: 
+
+isTheUserLoggedIn == false; // We're still getting true
+
+// ??? 
+
+/* As we saw earlier by assigning 0 to the particular variable it doesn't mean that we mean it to be false. We might, but we also might not. So what if we wanted to treat 0 as zero and not as false? JavaScript behind the scenes will try to translate on the double equality comparison the zero as false and that might not be exactly what we want to and thus result in unexpected behavior. That's why it's 99% better to use the strict comparison operators === and !== than the == and !=. */
+```
+
+## How to write javaScript code in a file and compile and execute it in the browser. 
+
+So, we can't simply create a .js file for example app.js and write our code in there and throw it at our browser to compile and execute it. That's not how things will work. 
+
+Browsers don't know what to do with plain .js files.
+We have to first make an html file that links with a .js file, because browsers know how to render an html file and whatever else files are linked with that particular html file we're throwing to our browser. 
+
+ - Example below: 
+
+Consider the 2 below files, for example inside the same directory. 
+
+1. index.html
+2. app2.js
+
+Pay attention inside the index.html file and you'll find the following line of code: `<script src="app2.js"></script>`. What this does is, it is linking the app2.js file with our index.html file and if we open our html file inside the browser we'll see an alert with a message, which is the exact message we wrote at our app2.js file and that indicates that everything works successfully and our browser has rendered our html file and compiled and run our app.js file. 
+So that's the workaround of writing javascript scripts and 'throwing' 'em at our browsers. 
+*You might also see that we have another script commented on our html file. Instead of creating an html file for each and every of our .js files we can simply swap the names of our .js files inside the script tag and compile each time a different js file inside the same html file.*
+
+```html
+<!-- file: index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First JS Script</title>
+
+  <!-- <script src="app.js"></script> -->
+  <script src="app2.js"></script>
+</head>
+<body>
+  
+</body>
+</html>
+```
+
+```javascript
+/* file: app2.js */
+
+alert("It's working!");
+```
+
+> So from now and on, we’ll be creating an html file and we’ll be linking that file with a script .js file so we can give it to our browser to compile and run it and test our code with it. 
+
+From here on I'll be writing the information about each and every topic of discussion on the corresponding .js files inside comments alongside the code for better understanding and I'll be providing the links for the specific files under the title of each and every topic. 
+
+## console.log() method
+
+<ul>
+  <li>
+    <a href="#">📁 first_JS_files</a>
+    <ul>
+      <li>
+        <a href="#">📄 app.js</a>
+      </li>
+    </ul>
+  </li>
+</ul>
