@@ -645,10 +645,10 @@ From here on I'll be writing the information about each and every topic of discu
 
 <ul>
   <li>
-    <a href="#">📁 first_JS_files</a>
+    <a href="https://github.com/andrewpap22/DearJavaScript/tree/master/first_JS_files">📁 first_JS_files</a>
     <ul>
       <li>
-        <a href="#">📄 app.js</a>
+        <a href="https://github.com/andrewpap22/DearJavaScript/blob/master/first_JS_files/app.js">📄 app.js</a>
       </li>
     </ul>
   </li>
