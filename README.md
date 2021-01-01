@@ -660,10 +660,10 @@ alert("It's working!");
 
 <ul>
   <li>
-    <a href="#">📁 Boolean_logic</a>
+    <a href="https://github.com/andrewpap22/DearJavaScript/tree/master/Boolean_Logic">📁 Boolean_logic</a>
     <ul>
       <li>
-        <a href="#">📄 app.js</a>
+        <a href="https://github.com/andrewpap22/DearJavaScript/blob/master/Boolean_Logic/app.js">📄 app.js</a>
       </li>
     </ul>
   </li>
