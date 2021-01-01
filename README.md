@@ -639,7 +639,9 @@ alert("It's working!");
 
 > So from now and on, we’ll be creating an html file and we’ll be linking that file with a script .js file so we can give it to our browser to compile and run it and test our code with it. 
 
-From here on I'll be writing the information about each and every topic of discussion on the corresponding .js files inside comments alongside the code for better understanding and I'll be providing the links for the specific files under the title of each and every topic. 
+**From here on I'll be writing the information about each and every topic of discussion on the corresponding .js files inside comments alongside the code for better understanding and I'll be providing the links for the specific files under the title of each and every topic.**
+
+<hr>
 
 ## console.log() method
 
@@ -653,3 +655,31 @@ From here on I'll be writing the information about each and every topic of discu
     </ul>
   </li>
 </ul>
+
+# Boolean Logic
+
+<ul>
+  <li>
+    <a href="#">📁 Boolean_logic</a>
+    <ul>
+      <li>
+        <a href="#">📄 app.js</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+## ❓ Quiz 
+
+> Go study the contents inside the app.js file of the Boolean logic section before trying to answer the below
+
+```javascript
+let x = 7; 
+
+// what does this evaluate to?
+x == 7 || x === 3 && x > 10;
+```
+
+More information on operator precedence can be found [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
+
+## Next Chapter: `Arrays!`
