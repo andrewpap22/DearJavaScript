@@ -12,5 +12,7 @@ npm install
 npm run dev
 
 # Build for production in the dist/ directory
+# the command bellow basically will create a dist directory with some files 
+# and these files can be deployed to get the website online and that's all you need.
 npm run build
 ```
