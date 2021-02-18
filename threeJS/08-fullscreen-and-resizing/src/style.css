@@ -1,0 +1,22 @@
+/* this fixes the viewport but doesn't remove scroll bars */
+/* *
+{
+  margin: 0;
+  padding: 0;
+} */
+
+/* making sure that the page is impossible to scroll beyond limits */
+html,
+body
+{
+  overflow: hidden;
+}
+
+/* fixes the edges of the viewport as well as removes the scroll bars. */
+.webgl
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none; /* removes the blue outline around the viewport when dragging objects. */
+}
