@@ -683,3 +683,26 @@ x == 7 || x === 3 && x > 10;
 More information on operator precedence can be found [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
 
 ## Next Chapter: `Arrays!`
+
+So Arrays are **ordered collections of values.** 
+We can think of them as: 
+ - List of comments on IG post.
+ - Collection of levels in a game
+ - Songs in a playlist
+ - pills packed in many boxes in a row. 
+
+So to create an array: 
+
+```javascript
+// To make an empty array
+let students = [];
+
+//An array of strings
+let colors = ['red', 'orange', 'yellow'];
+
+//An array of numbers
+let lottoNums = [19, 22, 56, 12, 51];
+
+// A mixed array
+let stuff = [true, 68, 'cat', null];
+```
