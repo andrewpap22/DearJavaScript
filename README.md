@@ -706,3 +706,317 @@ let lottoNums = [19, 22, 56, 12, 51];
 // A mixed array
 let stuff = [true, 68, 'cat', null];
 ```
+
+> Remember that arrays are indexed! 
+
+For example, let's say we have: 
+
+```javascript
+let colors = ["red", "blue", "green", "violet", "yellow"];
+```
+
+If we want to access the 1st element of the array we should do something like: 
+
+```javascript
+console.log(colors[0]); 
+
+// the above line will print us ~> red
+
+/*
+ * Remember that arrays have a length property
+ * So if we want to access the last element of the colors array we can do something like:
+*/
+
+console.log(colors[colors.length - 1])
+```
+
+**Why did we do -1 in the above line of code?**
+
+> The .length property gives us the number of elements that the array contains, so in our case 5, but remember that arrays start indexing from 0 so if we did: **console.log(colors[5])** we would be out of bounds of the array. So to get the last element of the array we should always do the .length property - 1.
+
+## Modifying Arrays
+
+```javascript
+let colors = ["rad", "orange", "red", "blue", "green"];
+
+colors[0] = "red";
+
+colors[2] = "yellow";
+colors[3] = "green";
+
+colors[5]; // undefined (our array has 5 elements so the indexes are 0-4)
+colors[5] = "violet";
+
+// after adding the violet to the 5th position of the array (6th element) our array is modified as: 
+// ["red", "orange", "yellow", "green", "blue", "violet"]
+```
+
+Pay your attention in the example above. We has an array of 5 elements i.e. 5 indices 0-4 and we added another element at the end of the array by typing: **colors[5] = "violet";**.
+But in that case we simply counted that we had 5 elements so 0-4 and then we simply manually typed the number 5 index and that resulted in adding another element after the last element of the array. 
+But what if we don't have a way to count the elements of the array? 
+Say for example that we get our data from a user, or from a database, how can we then add a new element at the end of the array? 
+Well... we can use once again the **.length** property! 
+
+```javascript
+colors[colors.length] = "purple"; 
+```
+
+> Notice that we don't have to do a -1 here because we simply want to add a new element **after** the currently last item of the array, so it becomes our new last element. 
+
+## Array Methods
+
+ - **Push**, add to the end
+ - **Pop**, remove from end
+ - **Shift**, remove from start
+ - **Unshift**, add to start
+ - **Concat**, merge arrays
+ - **includes**, look for a value
+ - **indexOf**, just like str.indexOf
+ - **join**, creates a string from array
+ - **reverse**, reverses an array
+ - **slice**, copy portion of an array
+ - **splice**, remove / replace elements
+ - **sort**,  sorts an array
+
+### Examples
+
+```javascript
+/*
+ * Go have a look on the app.js file of this module.
+ * Arrays_and_Objects directory
+*/
+```
+> We can have more information about all the methods on the MDN documentation
+
+[**INFO**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+❗️❗️ **We can store arrays inside other arrays** ❗️❗️
+
+```javascript
+const colors = [
+  ["red", "pink"],
+  ["another element", "yet another element"],
+  ["we keep nesting arrays inside the colors array"],
+  ["you get the point now i think...", "qwerty"],
+  22,
+  true,
+  "a simple string",
+  ["a string as an element inside an array which is inside another array"]
+];
+```
+
+How do we access an element of an array inside another array? 
+
+```javascript
+// Let's say on the colors array we want to access the element ~> yet another element
+// First we see that it is a string inside an array which array is a second element of our colors array. 
+// So first to access that 2nd element we can do: 
+
+console.log(colors[1]); // will print: ["another element", "yet another element"]
+
+// Now to access the yet another element which is the second element of that array we have to do: 
+console.log(colors[1][1]) // this will print: yet another element.
+
+/*
+ * and if we want to change the string: "yet another element" we can do:
+*/
+colors[1][1] = "we changed the yet another element.";
+
+console.log(colors[1][1]); // this will now print: we changed the yet another element instead of: yet another element
+```
+
+A good reason to have nested arrays is when you want to display a grid for example, like a chess grid, or something else similar. 
+
+Let's say we have the below tic - tac - toe picture 
+
+>   o |    | x
+> ----|----|----
+>     | x  | o
+> ----|----|----
+>   x | o  |
+
+We can describe the above picture with nested arrays like following: 
+
+```javascript
+const board = [
+  ['o', null, 'x'],
+  [null, 'x', 'o'],
+  ['x', 'o', null]
+];
+```
+
+And now let's go to...
+
+# Objects ❗️
+
+An object allows us to store data where we can associate things and group pieces of data together but rather than simply ordering data, based of an index i.e the 0th, the 1st, the 2nd and so on... (like an array)
+We can instead specify labels. 
+For example totalSteps we made equals 1234. 
+So we have labels and values for the labels.
+
+```javascript
+const fitBitData = {
+  totalSteps : 1324,
+  totalMiles : 222,
+  avgCalorieBurn : 12341324, 
+  WorkoutsThisWeek : "5 of 7",
+  avgGoodSleep : "2:13"
+};
+```
+
+Basically Objects at a high level are: 
+
+ - Objects are collections of properties. 
+ - Properties are a key - value pair. 
+ - Rather than accessing data using an index, we use custom keys.
+
+How can we access data inside an object? 
+
+ - Using the dot . syntax 
+
+```javascript
+// Let's say we have the fitBitData object we created above and we want to access the value of the totalMiles
+
+console.log(fitBitData.totalMiles); // will print: 222
+```
+
+> Keys in javaScript objects are automatically converted to strings!!!
+
+We also have another way to access data from objects simply because of the above statement! 
+Example: 
+
+```javascript
+const palette = {
+  red : "#eb4d4b",
+  yellow : "#f9ca24",
+  blue : "#30336b"
+};
+
+console.log(palette.red); // will print: #eb4d4b
+
+console.log(palette["blue"]); // will print: #30336b
+
+let color = "yellow";
+console.log(palette[color]); // will print: #f9ca24
+```
+
+Why do we have the brackets [] notation as well to access data in objects?? 
+
+Let's say we have the following object: 
+
+```javascript
+const numbers = {
+  100 : "one hundred",
+  200 : "two hundred",
+  "76 trombones" : "great song!",
+  red : "#eb4d4b"
+};
+
+// if we try to do: numbers.100; 
+// we might expect to get one hundred but instead we will get an error. 
+// the same goes for numbers.76 trombones; 
+
+// but if we do: 
+
+console.log(numbers["76 trombones"]); // it will print: great song! 
+
+// we can even do something like this: 
+
+console.log(numbers["re" + "d"]); // it will print out #eb4d4b
+```
+
+## Updating & Adding properties
+
+```javascript
+const fitBitData = {
+  totalSteps : 1234,
+  totalMiles : 12345,
+  avgCalorieBurn: 5,
+  workoutThisWeek : "5 of 7",
+  avgGoodSleep : "2:13"
+};
+
+// Updating properties: 
+fitBitData.workoutsThisWeek = "6 of 7";
+fitBitData.totalMiles += 22;
+
+// Adding a new property
+fitBitData.heartStillBeating = true;
+```
+
+## Arrays + Objects
+
+We can mix 'em up...
+
+```javascript
+// so.. we can have objects as array elements.
+
+const shoppingCard = [
+  {
+    product : "Jenga Classic",
+    price : 6.99,
+    quantity : 1
+  },
+  {
+    product : "Jenga non Classic",
+    price : 6.9999,
+    quantity : 2
+  },
+  {
+    product : "Jenga almost Classic",
+    price : 6,
+    quantity : 22
+  }
+];
+
+// or.. we can have arrays as object values and also have objects inside objects...
+
+const student = {
+  firstName : "David",
+  lsatName : "Jones",
+  strengths : ["Music", "Art"],
+  exams : {
+    midterm : 92,
+    final : 69
+  }
+};
+
+// Short Quiz: How can we access the midterm and final properties, add their values and divide them by 2?
+
+// Answer: 
+
+let mid = student.exams.midterm;
+let fin = student.exams.final;
+
+console.log((mid + fin) / 2);
+
+// We want to print out the string Art of the array located in the object above: 
+
+// Answer: 
+
+console.log(student.strengths[1]);
+```
+
+## Arrays and Objects Equality 
+
+Whatever we will discuss bellow for the arrays works exactly the same for the objects in javaScript.
+
+So, let's say we have 2 arrays and we want to check if they are the same: 
+
+```javascript
+const array1 = [1, 2, 3];
+const array2 = [1, 2, 3];
+
+// if we try to do: 
+
+if (array1 === array2)
+{
+  console.log(true);
+}
+else
+{
+  console.log(false); // this block will be executed and false will be printed. 
+}
+```
+
+gia na sunexisw ta notes se auto to shmeio, na ksanadw to teleutaio video apo ot objects - the vore of javascript directory.
