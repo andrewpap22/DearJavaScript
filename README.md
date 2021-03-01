@@ -829,11 +829,11 @@ A good reason to have nested arrays is when you want to display a grid for examp
 
 Let's say we have the below tic - tac - toe picture 
 
->   o |    | x
-> ----|----|----
->     | x  | o
-> ----|----|----
->   x | o  |
+  o |    | x
+----|----|----
+    |  x | o
+----|----|----
+  x |  o |
 
 We can describe the above picture with nested arrays like following: 
 
@@ -1019,4 +1019,38 @@ else
 }
 ```
 
-gia na sunexisw ta notes se auto to shmeio, na ksanadw to teleutaio video apo ot objects - the vore of javascript directory.
+What's the reason for the above code sample? 
+We have to understand something really important here! 
+
+When we declare an array variable in javaScript, it is **NOT** the actual array that's store in that variable in memory like with a simple string for example, but instead, a reference (memory address) is stored inside that variable that POINTS to the specific array we initialized it with. 
+
+So for example the **array1** has store in memory an address like **0xaf12e** and the **array2** has for example another one, let's say **0x0099bef**. 
+
+Even though both point to a similar looking array (an array containing 3 elements, ~> 1,2,3) they actually point to different arrays. So if I modify array1 for example, then array2 will not be modified as well. And that makes sense right? 
+
+So finally when we do **array1 === array2** we're actually doing: **0xaf12e === 0x0099bef**, which obviously is not the case! 
+
+ - !! Quick quiz (try to think for it before checking the answer below.)
+ 1. What would be the case where array1 === array2 gives us true?? 
+
+```javascript
+// Answer
+const array1 = [1, 2, 3];
+const array2 = array1; 
+
+if (array1 === array2)
+{
+  console.log(true); // this block will be executed and true will be printed.
+}
+else
+{
+  console.log(false);  
+}
+```
+
+Now, try to think what's the difference here. 
+We're assigning to array2 the memory address which array1 contains. 
+So basically, now both array1, array2 POINT TO the same exact array ~> [1, 2, 3].
+And so the case now is: **array1 === array2 === 0xaf12e**!!!
+
+And if we here try to modify the array2 then array1 will be modified as well and vice versa! 
