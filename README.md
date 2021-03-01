@@ -1055,3 +1055,47 @@ So basically, now both array1, array2 POINT TO the same exact array ~> [1, 2, 3]
 And so the case now is: **array1 === array2 === 0xaf12e**!!!
 
 And if we here try to modify the array2 then array1 will be modified as well and vice versa! 
+
+<hr>
+
+And now we're going to enter the world of...
+
+## Loops !
+
+```javascript
+for (let num = 1; num <= 20; num++) 
+{
+  console.log(`${num}x${num} = ${num * num}`);
+}
+
+/*
+ * This will output:
+ * 1x1 = 1
+ * 2x2 = 4
+ * 3x3 = 9
+ * ...
+*/
+```
+
+### For loops + arrays 
+
+> To Loop over an array, start at0 and continue to the last index (length - 1)
+
+```javascript
+const animals = ['lion', 'fox', 'wolf'];
+
+for (let i = 0; i < animals.length; i++)
+{
+  console.log(i, animals[i]); 
+}
+
+/**
+ * output: 
+ * 0 lion
+ * 1 fox
+ * 2 wolf 
+/
+
+// check the ap.js of the loops module for more examples
+```
+
