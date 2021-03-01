@@ -830,10 +830,11 @@ A good reason to have nested arrays is when you want to display a grid for examp
 Let's say we have the below tic - tac - toe picture 
 
   o |    | x
-----|----|----
-    |  x | o
-----|----|----
-  x |  o |
+--------------
+   |  x | o
+--------------
+ x |  o |
+--------------
 
 We can describe the above picture with nested arrays like following: 
 
