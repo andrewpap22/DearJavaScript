@@ -1099,3 +1099,175 @@ for (let i = 0; i < animals.length; i++)
 // check the ap.js of the loops module for more examples
 ```
 
+## While Loops 
+
+> A while loop continues to run as long as its test condition is true
+
+```javascript
+let num = 0;
+while (num < 10)
+{
+  console.log(num);
+  num++;
+}
+```
+
+The best case scenario to write a while loop is when you don't know exactly the number of times the loop is going to run. If we for example know that our loop is going to run 10 times, we better use a for loop instead.
+
+> Check the app.js file of this section for a good use case example of a while loop
+
+There is a special keyword in javaScript called **break** and we usually use it to break out of a loop. 
+It is not used commonly in for loops, but it is in while loops. 
+
+> head again to the app.js file of this section for an example.
+
+## For ... of 
+
+A nice and easy way of iterating over arrays. (or other iterable objects)
+
+**Syntax:**
+
+```javascript
+/*
+ * for (variable of iterable)
+ * {
+ *   statement;
+ * }
+*/
+
+let subreddits = [
+  "soccer",
+  "popheads",
+  "cringe",
+  "books"
+];
+
+for (let subreddit of subreddits)
+{
+  console.log(subreddit); // printing each element of the array.
+}
+
+// with a plain for loop we would do it like:
+
+for (let i = 0; i < subreddits.length; i++)
+{
+  console.log(subreddits[i]);
+}
+
+// since for of works with anything iterable, we can use it to iterate through a string also: 
+
+for (let character of "helloThereHowDoYouDo")
+{
+  console.log(character);
+}
+
+// Now, we'll continue with some use cases that we might prefer the plain for loop instead of the for of
+
+// for the below magic square, each row sums up to 15, also each column and each diagonal.
+const magicSquare = [
+  [2, 7, 6],
+  [9, 5, 1],
+  [4, 3, 8]
+];
+
+// So, let's say that we want to verify that each row sums up to 15
+// We could do that with a traditional for loop as follows: 
+
+for (let i = 0; i < magicSquare.length; i++) // iterate through the magicSquare array
+{
+  let row = magicSquare[i]; // each element of the magicSquare array, is a sub array
+  let sum = 0;
+  for (let j = 0; j < row.length; j++) // iterate through each of the sub arrays
+  {
+    //console.log(row[j]); // printing each element of the sub arrays of the magicSquare array.
+    sum += row[j];
+  }
+  console.log(`${row} summed up to: ${sum}`);
+}
+
+// And now, how we could do the same as above with for of loops:
+
+for (let row of magicSquare)
+{
+  let sum = 0;
+  for (let num of row)
+  {
+    sum += num;
+  }
+  console.log(`${row} summed up to: ${sum}`);
+}
+
+// So it seems like that again using for of is much simpler and less written code. 
+
+// But let's now see an example that we might prefer the traditional for loop instead of the for...of
+
+const words1 = ["mail", "milk", "bath", "black"];
+const words2 = ["box", "shake", "tab", "berry"];
+
+/*
+ * Now, what we want to do is loop through the words1 array and for each element we want to print out the corresponding element from the words2 array.
+ * so for example for the 1st element we would have: mailbox and so on..
+*/
+
+for (let i  = 0; i < words1.length; i++)
+{
+  console.log(`${words1[i]}${words2[i]}`); 
+  /*
+   * output:
+   * mailbox
+   * milkshake
+   * bathtab
+   * blackberry
+  */
+}
+
+/*
+ * we could not do the same here with the for of even if we tried...
+ * Why?? 
+ * Because with the traditional for loop we have the index number of the array, and that is ~> i
+ * But with the for of loop we won't have that index to provide the words2 array with and print simultaneously, we would only have each and every element, but not the array index of each and every element! 
+*/
+```
+
+Now we'll talk about how to use a for of loop with objects...
+
+```javascript
+const movieReviews = {
+  Arrival : 9.5,
+  Alien : 9.0,
+  Amelie : 8,
+  "In Bruges" : 10,
+  "Kill Bill" : 9.5,
+  Coraline : 9.0 
+};
+
+/*
+ * Objects are not iterable so to loop through them (through their keys or their values or both)
+ * we will have to use 2 built in methods: 
+ * 1. Object.keys()
+ * 2. Object.values()
+*/
+
+// Examples: 
+
+for (let movie of Object.keys(movieReviews))
+{
+  console.log(movie); // will print out each key of the object
+  console.log(movie, movieReviews[movie]); // will also print the value of each key
+}
+
+// let's say we want to calculate the average rating of the movies: 
+
+const ratings = Object.values(movieReviews);
+
+let total = 0;
+for (let rating of ratings)
+{
+  total += rating;
+}
+
+let avg = (total / ratings.length);
+console.log(avg);
+```
+
+se auto to shmeio eimai sto teleutaio video tou loop section (video 12, for...in)

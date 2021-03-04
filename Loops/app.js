@@ -54,3 +54,38 @@ for (let i = word.length - 1; i >= 0; i--)
   //console.log(word[i]);
 }
 console.log(reversedWord); // and thus we reversed a word! 
+
+/**
+ * Example of using a while loop:
+ * We'll make a guess game where we have a fixed number and we prompt the user to guess for a number.
+ * If their guess matches our fixed number then he wins and we prompt a message whistl exiting the while loop. 
+ * Else we continue looping until the player guesses the number. 
+ * So here we don't know exactly in how many rounds (the number that our loop will run) the player will guess the number and so that's the best use case for a while loop to be used.
+ */
+
+const targetNumber = Math.floor(Math.random() * 10); // generating a random number and keeping it fixed to the const variable.
+let guess = Math.floor(Math.random() * 10); // making the variable with let because we want it to be changed, when the player guesses a new number.
+
+// so until the player guesses the number we will keep looping.
+while(guess !== targetNumber)
+{
+  console.log(guess);
+  guess = Math.floor(Math.random() * 10);
+}
+
+console.log(`Target: ${targetNumber}, GuessedNumber: ${guess}`);
+
+/**
+ * example of the 'break' keyword usage
+ */
+
+while (true)
+{
+  if (target === guess) // when the target number is the same as the guess number
+  {
+    break; // then break out of the infinite while loop.
+  }
+  console.log(`Target: ${targetNumber}, GuessedNumber: ${guess}`);
+  guess = Math.floor(Math.random() * 10);
+}
+console.log(`Target: ${targetNumber}, GuessedNumber: ${guess}`);
