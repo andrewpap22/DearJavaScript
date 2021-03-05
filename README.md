@@ -1301,3 +1301,34 @@ for (let property in jeopardyWinnings)
   console.log(jeopardyWinnings[property]); // will print the values
 }
 ```
+
+And now... the last big topic...
+
+# Functions!!!
+
+> Functions are reusable procedures and allow us to write reusable, modular code. 
+> We define a "chunk" of code that we can then execute at a later point. 
+
+Define a function in javaScript: 
+
+```javascript
+/*
+ * function funcName()
+ * {
+ *   // do something
+ * }
+*/
+
+// example: 
+
+function grumpus() 
+{
+  console.log("qwerty");
+  console.log("qwerty2");
+  console.log("qwerty3");
+}
+
+// to see the logs in the console we have to call the function:
+
+grumpus(); // now we'll see the 3 logs.
+```
