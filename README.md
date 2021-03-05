@@ -1270,4 +1270,34 @@ let avg = (total / ratings.length);
 console.log(avg);
 ```
 
-se auto to shmeio eimai sto teleutaio video tou loop section (video 12, for...in)
+And lastly...
+
+## for .. in loops
+
+> Loop over the keys in an object
+
+```javascript
+/*
+ * for (variable in object) 
+ * {
+ *   statement;
+ * }
+*/
+
+// a for in loop will loop over the keys! The properties in an object
+// example
+
+const jeopardyWinnings = 
+{
+  regularPlay : 2522700,
+  watsonChallenger : 12341234,
+  tournamentOfChampions : 50000000,
+  battleOfTheDecades : 2222222,
+};
+
+for (let property in jeopardyWinnings)
+{
+  console.log(property); // will print the keys
+  console.log(jeopardyWinnings[property]); // will print the values
+}
+```
