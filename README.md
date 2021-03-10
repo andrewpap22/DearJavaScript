@@ -1332,3 +1332,170 @@ function grumpus()
 
 grumpus(); // now we'll see the 3 logs.
 ```
+
+Let's try to make another function.
+
+We'll call it a Dice Roll function. 
+
+```javascript
+function rollDie 
+{
+  let roll = Math.floor(Math.random() * 6) + 1; // generating random numbers from 1 to 6
+  console.log(`Rolled: ${roll}`);
+}
+
+// And now we have to 'execute', call the function in order to see the output 
+rollDie();
+```
+
+## Function Arguments: 
+
+> Arguments is a fancy term for parameters. 
+
+```javascript
+// Example: 
+
+function greet(nickname)
+{
+  console.log(`Hi, ${nickname}!`);
+}
+
+const name = "Mirella";
+greet(name); 
+
+// will print out: Hi, Mirella!
+```
+
+### Multiple arguments for a function!
+
+```javascript
+function sum(x, y)
+{
+  console.log(x + y);
+}
+
+// We have to keep in mind that the order of the arguments matters! 
+
+// Example: 
+
+function divide(a, b)
+{
+  console.log(a / b);
+}
+
+// call of the function
+divide(1, 4); // -> 1/4 = 0.25
+divide(4, 1); // -> 4/1 = 4
+```
+
+### RETURN 
+
+> Built - in methods **return** values when we call them. 
+
+We can store those values: 
+
+```javascript
+const yell = "I will end you".toUpperCase();
+
+console.log(yell); // I WILL END YOU
+
+const idx = ['a', 'b', 'c'].indexOf('c');
+
+console.log(idx); // 2
+```
+
+> **Important note!!!** The return statement ends function execution AND specifies the value to be returned by that function.
+
+```javascript
+function square(x)
+{
+  return x * x; // function is done here and will not execute any statement below it.
+  console.log("this will not get printed");
+}
+
+// but obviously if a conditional specifies otherwise then:
+
+function isPurple(color)
+{
+  if (color.toLowerCase() === "purple")
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+// another and more elegant way of writing the above function: 
+
+function isPurple(color)
+{
+  if (color.toLowercase() === "purple")
+  {
+    return true;
+  }
+  return false;
+}
+
+// yet another shorter way: 
+
+function isPurple(color)
+{
+  return color.toLowerCase() === "purple"; // if the string passed is purple ~> true will be returned, else ~> false will be returned.
+}
+
+// Now we'll write a more 'advanced' purple color checking function: 
+
+/**
+ * We'll pass an array to our function and
+ * if we find a position in the array which the string purple or magenta is contained then,
+ * we'll return true, else we'll return false
+*/
+
+function containsPurple(arr)
+{
+  for (let element of arr)
+  {
+    if (element === "purple" || element === "magenta")
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+```
+
+❗️**Challenges**❗️
+
+> ❗️ Please do try the challenges yourself before going to the app.js file and have a look on the solution.
+
+ 1. Write a isValidPassword function. It accepts 2 arguments: password and username. The password must: 
+  - be at least 8 characters
+  - cannot contain spaces
+  - cannot contain the username
+  - If all the requirements are met, return true. Otherwise, return false. 
+  - isValidPassword("89F@#$", "dogLuvr"); // true 
+  - isValidPassword("dogLuvr123", "dogLuvr"); // false
+
+ 2. Write a function to find the average value in an array of numbers. 
+
+ 3. A pangram is a sentence that contains every letter of the alphabet like: 
+  - "The quick brown fox jumps over the lazy dog"
+  - > Write a function called isPangram, which checks to see if a given sentence contains every letter of the alphabet. (Make sure you ignore string casing!!)
+  - Example: isPangram("The five boxing wizards jump quickly"); // true
+  - isPangram("The five boxing wizards jump quick"); // false
+
+ 4. Write a getCard() function which returns a random playing card object, like: 
+  - {
+      value : 'K',
+      suit  : 'clubs'
+    }
+  - Pick a random value from: (2,3,4,5,6,7,8,9,10,J,Q,K,A)
+  - Pick a random suit from: Clubs, Spades, Hearts, Diamonds
+  - Return both in an object.
+
+<hr>
+
+## An advanced look at functions! 
