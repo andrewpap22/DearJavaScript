@@ -1498,4 +1498,4 @@ function containsPurple(arr)
 
 <hr>
 
-## An advanced look at functions! 
+## An advanced look at functions!  
