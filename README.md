@@ -1499,3 +1499,78 @@ function containsPurple(arr)
 <hr>
 
 ## An advanced look at functions!  
+
+### Scope 
+
+> Variable "visibility"
+
+ - The location where a variable is defined dictates where we have access to that variable.
+
+The first type of scope we're going to see is called: **Function Scope**
+
+```javascript
+function helpMe()
+{
+  let msg = "I'm on fire!";
+
+  console.log(msg); // I'm on fire!
+}
+
+console.log(msg); // !! msg NOT defined!
+
+/**
+ * msg variable is scoped to the helpMe function only! 
+*/
+
+// another example: 
+
+let bird = "mandarin duck";
+
+function birdWatch()
+{
+  let bird = "golden pheasant";
+  console.log(bird); // golden pheasant
+}
+
+console.log(bird); // mandarin duck
+```
+
+### Block Scope
+
+```javascript
+let radius = 8;
+
+if (radius > 0)
+{
+  const PI = 3.14;
+
+  let circ = 2 * PI * radius;
+}
+
+console.log(radius); // 8 
+console.log(PI); // NOT DEFINED
+console.log(circ); // NOT DEFINED
+
+/**
+ * PI & circ are scoped to the if BLOCK
+*/
+
+// ! IMPORTANT 
+
+if (true)
+{
+  let letVariable = 1;
+  const constVariable = 2;
+  var varVariable = 3; 
+}
+
+console.log(letVariable); // ERROR, NOT DEFINED
+console.log(constVariable); // ERROR, NOT DEFINED
+console.log(varVariable); // 3
+
+/**
+ * So we can see that let const and var have different scope rules. 
+ * When we declare a variable inside a scope, i.e a function scope or a block of code (if, for, while, etc..) with let and const then those variables are scoped only to the above mentioned scopes. 
+ * But! When we declare a variable with var, then var variables are only scoped within functions! They're not scoped in block of codes and thus we can access it as we see in the above example.
+8/ 
+```
