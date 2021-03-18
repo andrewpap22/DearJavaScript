@@ -1941,3 +1941,48 @@ hoot(); // works as expected
 ```
 
 > Next topic: ~> Apply Functions to Collections of Data
+
+So, this section is focused on useful array methods that expects you to pass in a callback! 
+
+Arrays come with many built-in methods that accept callback functions. 
+They are super super useful.
+
+So, the first method that we'll talk about is called:
+
+## forEach
+
+> accepts a callback function.
+> Calls the function once per element in the array. 
+
+```javascript
+const nums = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+nums.forEach(function(n) {
+  console.log(n * n);
+  // prints: 81, 64, 49, 36, 25, 16, 9, 4, 1
+});
+
+nums.forEach(function(el) {
+  if (el % 2 === 0)
+  {
+    console.log(el)
+    // prints: 8, 6, 4, 2
+  }
+});
+```
+
+## Map
+
+> creates a new array with the results of calling a callback on every element in the array.
+
+```javascript
+const texts = ["rofl", "lol", "omg", "ttyl"];
+const caps = texts.map(function(t) {
+  return t.toUpperCase();
+});
+
+console.log(texts); // ["rofl", "lol", "omg", "ttyl"]
+console.log(caps); // ["ROFL", "LOL", "OMG", "TTYL"]
+```
+
+!! NA KSANADW TO MAP VIDEO !!
