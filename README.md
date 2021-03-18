@@ -1572,5 +1572,372 @@ console.log(varVariable); // 3
  * So we can see that let const and var have different scope rules. 
  * When we declare a variable inside a scope, i.e a function scope or a block of code (if, for, while, etc..) with let and const then those variables are scoped only to the above mentioned scopes. 
  * But! When we declare a variable with var, then var variables are only scoped within functions! They're not scoped in block of codes and thus we can access it as we see in the above example.
-8/ 
+*/ 
 ```
+
+## Lexical Scope
+
+```javascript
+function outer()
+{
+  let hero = "Black Panther";
+
+  function inner()
+  {
+    let cryForHelp = `${hero}, please save me!`; // we can have access to the hero variable inside the nested function.
+    console.log(cryForHelp);
+  }
+
+  inner(); // Black Panther, please save me!
+}
+
+console.log(hero); // NOT DEFINED.
+
+// what if we try to call inner() outside of the outer() function? 
+
+inner(); // ERROR! inner is not defined! 
+
+// So we can have access to the inner function ONLY inside the outer function. 
+```
+
+## Function Expressions 
+
+There another syntax we can use to define functions
+
+```javascript
+const square = function (num) 
+{
+  return num * num;
+}
+
+square(7); // 49
+```
+
+How can we store a function in a variable? 
+Well... in javaScript **functions are objects!**
+
+And that means that... we can store 10 of them in an array for example...  we can pass them as arguments... and so on..
+
+If we type in the google chrome developer tools console: ```console.dir(square)``` we will see that function in an object-like output format. And that proves the above statement.
+
+Let's now see an example of passing functions in an array...
+
+```javascript
+function add(x, y)
+{
+  return x + y;
+}
+
+const subtract = function(x, y)
+{
+  return x - y;
+}
+
+function multiply(x, y)
+{
+  return x * y;
+}
+
+const divide = function(x, y)
+{
+  return x / y;
+}
+
+const operations = [add, subtract, multiply, divide]; // passing the functions (which are objects) as array elements.
+
+// And for example we can call them now with 2 different ways: 
+
+// 1. 
+add(11,11); 
+
+// 2. 
+operations[0](100,4); 
+
+// The above 2 will call the add function and give us 22 and 104.
+
+// Also we can loop over this array and call each function
+
+for (let func of operations)
+{
+  let result = func(30,5);
+  console.log(result);
+
+  /*
+   * output:
+   * 35
+   * 25
+   * 150
+   * 6
+  */
+
+} // by the time this loop is executed 4 functions will have been called, passing in the 30 and 5 parameters
+```
+
+Also, we can store functions in objects... (so basically store objects inside objects as we've already seen.)
+
+```javascript
+const thing = {
+  doSomething : multiply // so the value of the doSomething property is the multiply function. 
+}
+
+// so if we do: 
+
+console.log(thing.doSomething) // we'll get the multiply function as an output
+
+// but if we do: 
+
+console.log(thing.doSomething(50, 2)); // we'll get: 100
+```
+
+And now, right here we just created our very first method! 
+
+By adding a function to an object ~> thing.doSomething(50,2) we're creating a method.
+
+Just like we have used the ~> "somestring".toUpperCase(); 
+Notice we're doing the same thing!
+
+> Next topic ~> Functions as arguments!
+
+So, what are **higher order functions**
+They're functions that operate on/with other functions.
+They can: 
+ - Accept other functions as arguments
+ - Return a function!
+
+```javascript
+function callThreeTimes(f)
+{
+  f();
+  f();
+  f();
+}
+
+function laugh()
+{
+  console.log("HAHAHHAHAHAHA");
+}
+
+/**
+ * so, here we pass the function laugh as an arugment to the callThreeTimes function.
+ * And what it does, is it calls 3 times the function that was passed as an argument. 
+ * And so we'll see at the console the string "AHAHAHAHAHA" printed 3 times.
+*/
+callThreeTimes(laugh); 
+```
+
+```javascript
+// Another example
+function repeat_n_Times(action, num)
+{
+  for (let i = 0; i < num; i++)
+  {
+    action();
+  }
+}
+
+/**
+ * So here what we're doing is, simply passing to the repeat_n_Times function, another function as an argument (action) and a number.
+ * And we're simply looping up until the number passed and calling the function passed as an argument
+ * and so we'll now see the string "HAHAHAHAH" printed 22 times.
+*/
+repeat_n_Times(laugh, 22); 
+```
+
+```javascript
+// yet another example
+
+/**
+ * We're going to make a function now,
+ * that is going to take 2 other functions as arguments,
+ * and it will call randomly 1 of the 2
+*/
+
+function pickRandomly(f1, f2)
+{
+  let rand = Math.random();
+  if (rand < 0.5)
+  {
+    f1();
+  }
+  else
+  {
+    f2();
+  }
+}
+```
+
+Now, we'll see examples of returning functions. 
+
+```javascript
+function makeBetweenFunc(min, max)
+{
+  return function(val)
+  {
+    return val >= min && val <= max; // this will return true of false, based on the values
+  }
+}
+
+const inAgeRange = makeBetweenFunc(18, 100);
+
+inAgeRange(17); // false
+inAgeRange(68); // true
+```
+
+Explanation of the above: 
+So we can think of functions returning other functions as a factory that generates functions. 
+If we see our example above, we return an anonymous function and we pass in as an argument a value *val*. 
+Then we do call the makeBetweenFunc and we pass in 2 numbers as arguments and we save the function that makeBetweenFunc returns to a variable. And basically it's not a variable now, but it's a function and in our example, *inAgeRange* is the name of the new function that was returned from the *makeBetweenFunc*.
+And now, when we're calling our new *inAgeRange* function, we pass in a value, and then that value get's inside it's block of code which is the return statement of the anonymous function that the *makeBetweenFunc* returns. 
+And finally we compare for example the value 17 passed through the inAgeRange function, with the min and max values from the makeBetweenFunc and we return true or false finally after the comparison. 
+And that's all!
+
+And now a super important javaScript topic and that is: 
+
+## CALLBACK FUNCTIONS
+
+> A callback function is a function passed into another function as an argument, which is then invoked inside the outer function. 
+
+So, we've already done this, remember with the callTwice function and the laugh function. 
+
+```javascript
+function callTwice(func)
+{
+  func();
+  func();
+}
+
+function laugh()
+{
+  console.log("HAHAHAHAH");
+}
+
+callTwice(laugh) // pass the laugh function as an argument. 
+
+// will print the string "HAHAHAH" 2 times
+```
+
+**So, in the above example, the laugh() function is a callback function.**
+
+Callbacks are extremely useful. 
+For example, let's say we want to make a request to load data from Facebook's API, then that request takes times to execute and we would have to pass a callback function which will be called when the request is finished and the data is back. 
+
+Now, an extremely day to day use case of callbacks is with anonymous functions. (we'll see examples below.)
+There is nothing wrong with making a standalone function and give it a name and then use it as a callback, but we usually just want to pass as a callback a function that we're going to use only one time. And for that usecase, anonymous functions are the perfect fit. 
+
+```javascript
+/**
+ * in javascript there is a built in method called setTimeout()
+ * it expects to pass 2 arguments. 
+ * 1 is a function, and the other one is a number, which is a miliseconds counter. 
+*/
+
+function grumpus() 
+{
+  alert("GAHH GO AWAY!");
+}
+
+setTimeout(grumpus, 5000);
+
+/**
+ * So what we've done here is that we call the setTimeout() function and we pass in our grumpus function
+ * which basically executes an alert. 
+ * What this will do simply is, display the alert on our webpage 5 seconds after the page has loaded.  
+*/
+
+/**
+ * Now, remember than grumpus is a callback function, so we can do the exact same thing as above,
+ * with anonymous functions
+*/
+
+setTimeout(function() {
+  alert("GAHH GO AWAY!");
+}, 5000);
+
+// And thus we achieved the same thing in much lesser lines of code.
+// But we're simply saying: Just execute the block of code inside the anonymous function after 5seconds and simply do it one time, we will not use this function again anywhere else, if we wanted to do that we could make a reusable function by declaring it with a name or save it to a variable as we've seen.
+```
+
+Now let's see a more advanced example. 
+We'll write some code that will run when we click a button on the page.
+**Head to the .html and .js files of this section (functions)**
+
+Now, last thing we're going to cover and you should not stress much about it, is, 
+
+### Hoisting
+
+```javascript
+var animal = "fox"; 
+console.log(animal) 
+
+// this will print "fox" obviously
+
+// but what if we reverse the lines? 
+
+console.log(animal);
+var animal = "fox"; 
+
+// we will get ~> undefined.
+
+// if we remove completely the let animal = ...
+
+console.log(animal); 
+
+// this will give us an error, that the variable animal is not defined anywhere. 
+
+// So what is called hoisting is the second of this 3 examples. 
+// Even though we've defined the variable animal but we're trying to print it before the definition we're not getting an error, but we get undefined. Why? 
+
+// Behind the scenes what javaScript is doing is basically this: 
+
+var animal; 
+console.log(animal); 
+animal = "fox"; 
+
+// and thus we get undefined, and that is what's called hoisting.
+```
+
+! Notice that everything we said in the above example is by using the **var** keyword. 
+Let's see what happens with const and let 
+
+```javascript
+console.log(shrimp);
+let shrimp = 'Harlequin Shrimp';
+
+/**
+ * We'll get a reference error in this case... : Cannot access shrimp before initialization.
+ * So that means that with the let keyword there is no hoisting! 
+ * And that's another reason we use let unstead of var besides the scope life of a variable that we've previously discussed. (same with const) 
+*/
+```
+
+And now let's discuss hoisting with functions... 
+
+```javascript
+
+howl(); // call function before definition, ~> still works!
+
+function howl()
+{
+  console.log("AWOOOOOO");
+}
+
+howl(); // call of the function after definition it woks as expected...
+```
+
+So yes... functions are hoisted. So we can imagine behind the scenes that, whenever and wherever we define and implement a function, javaScript behind the scenes will put them all in order at the top of the file as with, when declaring a variable with the var keyword.
+
+Remember that also we can define and implement functions as expressions. 
+And those are NOT hoisted! 
+
+```javascript
+
+hoot(); // reference error! Cannot access hoot before initialization!
+
+let hoot = function() {
+  console.log("HOOO HOOOOO");
+}
+
+hoot(); // works as expected
+```
+
+> Next topic: ~> Apply Functions to Collections of Data

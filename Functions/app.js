@@ -140,3 +140,16 @@ function getCard()
  * So in our case above, we repeat the way we pick a random element from an array. 
  * So we can make a function for that and use it inside the getCard function
  */
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+// Here you will find the advanced example of the callbacks section. 
+
+/**
+ * So, in order to run code after clicking the button, we first have to select which button right? (if we had multiple)
+ */
+
+const btn = document.querySelector('button'); // that's how we select our button from our html page
+btn.addEventListener('click', function() { // and then we make that button listen to a mouse click
+  alert("I told you not to click me!!!"); // and then pass a callback (anonymous function) to execute it's block of code after clicking the button.
+});
