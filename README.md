@@ -1969,6 +1969,64 @@ nums.forEach(function(el) {
     // prints: 8, 6, 4, 2
   }
 });
+
+// we can also get the index alongside the element with the forEach method. 
+nums.forEach(function(num, idx) {
+  console.log(idx, num); 
+  /**
+   * will print: 
+   * 0 9
+   * 1 8
+   * 2 7
+   * ...
+  */
+});
+
+// a more complex example: 
+
+const books = [{
+   title: "Good Omens",
+   authors: ["Terry", "Neil"],
+   rating: 4.25
+  },
+  {
+    title: "blah blah",
+    authors: ["qwerty"],
+    rating: 4.25
+  },
+  {
+    title: "skrr pop",
+    authors: ["qwerty2", "Neil"],
+    rating: 4.25
+  },
+  { 
+    title: "Good Omenzzzzz",
+    authors: ["Terryzzzz", "Neilzzzzzzz"],
+    rating: 4.25
+  } 
+];
+
+// So we have an array where each element is an object. 
+// Let's say we want to print each title
+
+books.forEach(function(book) { // so this book represents an element of the array which in our case is an object
+  // and so to print the title for example we need to do: book.title
+  console.log(book.title);
+});
+
+/**
+ * So, we can achieve the exact same result as above with a for of loop...
+*/
+for (let book of books)
+{
+  console.log(book.title);
+}
+
+// another way of achieving the same thing...
+for (let i  0; i < books.length; i++)
+{
+  console.log(books[i].title);
+}
 ```
 
 ## Map
@@ -1983,6 +2041,306 @@ const caps = texts.map(function(t) {
 
 console.log(texts); // ["rofl", "lol", "omg", "ttyl"]
 console.log(caps); // ["ROFL", "LOL", "OMG", "TTYL"]
+
+// so the .map() method generates a new array and thus the texts array is not modified. 
 ```
 
-!! NA KSANADW TO MAP VIDEO !!
+Another example using map
+
+```javascript
+const numbers = [20, 21, 22, 23, 24, 25, 26];
+
+const numDetail = numbers.map(function(n) {
+  return {
+    value: n,
+    isEven: n % 2 === 0
+  }
+});
+
+/**
+ * So what the above does is: It creates a new array with name: numDetail which contains 7 objects as elements,
+ * where each object corresponds to each element of the numbers array,
+ * and it tells us which of the numbers are even and which are not, but returning true or false to the isEven property. 
+ * the .map() function maps the original array, but it doesn't modify it and in our case we simply return an object immediately with a boolean expression to be returned in the isEven property.  
+*/
+```
+
+Yet another example... 
+
+```javascript
+const words = ["asap", "byob", "rsvp", "diy", "wtf"];
+
+// what we want to do is format each string of the array to the form of: 
+// A.S.A.P for example for the 1st string, and do the same with the rest
+
+const dotSeparatedWords = words.map(function(w) {
+  return w.toUpperCase().split('').join('.');
+});
+
+/**
+ * So how the above code exactly works...
+ * We first make every letter capital. 
+ * Then we apply the split() method by passing with an empty string and that results in giving us an array,
+ * whose elements is every single character of the word.
+ * so for example ~> ['A', 'S', 'A', 'P'] 
+ * and then the join() method joins into a single string each and every character of the array and it will join the characters by whatever we pass it as an argument. 
+ * In our case we wanted a dot (.), but we could also give a ~> (-), or whatever else. 
+*/
+```
+
+Yet another useful example, using the map() method. 
+
+```javascript 
+// Let's say we have the following array. 
+
+const books = [{
+   title: "Good Omens",
+   authors: ["Terry", "Neil"],
+   rating: 4.25
+  },
+  {
+    title: "blah blah",
+    authors: ["qwerty"],
+    rating: 4.25
+  },
+  {
+    title: "skrr pop",
+    authors: ["qwerty2", "Neil"],
+    rating: 4.25
+  },
+  { 
+    title: "Good Omenzzzzz",
+    authors: ["Terryzzzz", "Neilzzzzzzz"],
+    rating: 4.25
+  } 
+];
+
+// what we want to do is create an array that contains all our book titles from our library 
+
+const bookTitles = books.map(function(b) {
+  return b.title;
+});
+
+// And that's it
+
+/**
+ * We have created a new array called bookTitles and the map method will go through every element of the books array
+ * where in our case the elements of that array are objects, 
+ * and we can simply call b.title, to return each title of each element and store it in our new array. 
+ * And now if we do: 
+*/
+
+console.log(bookTitles); 
+
+// we should see that array containing as elements all the titles of the books array.
+// So simple and so useful.
+```
+
+## Arrow Functions => 
+
+> syntactically compact alternative to a regular function expression 
+
+```javascript
+const square = function(x) {
+  return x * x; 
+}
+
+// --------------------- 
+
+const square = (x) => {
+  return x * x;
+}
+
+const sum = (x, y) => {
+  return x + y;
+} 
+```
+
+2 Rules:
+
+```javascript
+// parenthesis are optional if there's only one parameter: 
+
+const square = x => {
+  return x * x;
+}
+
+// use empty parenthesis for functions with no parameters: 
+
+const singASong = () => {
+  return "LALALALAL";
+}
+```
+
+**Implicit Return** in arrow functions: 
+
+The bellow functions do the exact same thing
+
+```javascript
+// regular function expression
+const isEven = function(num) {
+  return num % 2 === 0;
+}
+
+// arrow function with parenthesis around parameter
+const isEven = (num) => {
+  return num % 2 === 0;
+}
+
+// no parenthesis around 1 parameter
+const isEven = num => {
+  return num % 2 === 0;
+}
+
+// implicit return
+const isEven = num => (
+  num % 2 === 0)
+); 
+
+// one-liner implicit return 
+const isEven = num => num % 2 === 0;
+```
+
+So, in scenarios where you have one expression that you want to be returned, you can re-write the arrow function by removing the curly braces and the return keyword and simple add parenthesis (see implicit return in the above example.) 
+
+The one-liner implicit return should be used only when we have short expressions that we want to return as our example above. For longer ones just use parenthesis. It's better to read.
+
+Now, an example of when we can't use an explicit return: 
+
+```javascript
+const square = n => (
+  if (n < 0)
+  {
+    return false; 
+  }
+
+  n * n;
+);
+```
+
+The above code snippet is wrong! 
+Javascript does not know what to return in this case, and thus that arrow function syntax is wrong. 
+We can use the explicit return ONLY when we have just a single expression that we want to return and nothing else.
+
+Now, let's see some more nice examples. 
+
+```javascript
+/**
+ * Let's say we have an array of numbers and we want to double these numbers and store them into a new array
+ * of course we can use map! 
+ * let's see 3 different ways of achieving the same thing!
+*/
+
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const doubles1 = nums.map(function(n) {
+  return n * 2;
+});
+
+const doubles2 = nums.map(n => {
+  return n * 2;
+});
+
+const doubles3 = nums.map(n => n * 2);
+```
+
+## Find 
+
+> returns the value of the **first element** in the array that satisfies the provided testing function. 
+
+```javascript
+let movies = [
+  "The Fantastic Mr. Fox",
+  "Mr. and Mrs. Smith",
+  "Mrs. Doubtfire",
+  "Mr. Deeds"
+];
+
+let movie = movies.find(movie => {
+  return movie.includes("Mrs.");
+}); // Will return: Mr. and Mrs. Smith 
+
+/**
+ * Notice that we also have Mrs. Doubtfire, BUT remember that it ONLY returns the FIRST element that satisfies our "condition"
+*/
+
+let movie2 = movies.find(m => m.indexOf("Mrs") === 0); // This will return: Mrs. Doubtfire .
+```
+
+## Filter 
+
+> Creates a new array with all elements that pass the test implemented by the provided function.
+
+```javascript
+const nums = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+const odds = nums.filter(n => {
+  return n % 2 === 1; // our callback returns true or false
+}); // if it returns true, n is added to the filtered array.
+
+console.log(odds); // [9, 7, 5, 3, 1]
+
+const smallNums = nums.filter(n => n < 5); // [4, 3, 2, 1]
+```
+
+## Every & Some 
+
+> **Every**, tests whether all elements in the array pass the provided function. It returns a boolean value.
+> **Some**, similar to every, but returns true if ANY of the array elements pass the test function. 
+
+```javascript
+const words = ["dog", "dig", "log", "bag", "wag"];
+
+words.every(word => {
+  return word.length === 3;
+}); // true
+
+words.every(word => word[0] === 'd'); //false 
+
+words.every(w => {
+  let last_letter = w[w.length - 1];
+  return last_letter === 'g';
+}); // true
+```
+
+```javascript
+const words = ["dog", "jello", "log", "cupcake", "bag", "wag"];
+
+// Are there any words longer than 4 characters? 
+words.some(word => {
+  return word.length > 4;
+}); // true
+
+// Do any words start with 'Z'? 
+words.some(word => word[0] === 'Z'); // false
+
+// Do any words contain "cake"?
+words.some(word => word.includes("cake"));
+```
+
+## Sort! 
+
+> arr.sort(compareFunc(a,b));
+
+ - If compareFunc(a,b) returns less than 0
+  - Sort a before b
+
+ - If compareFunc(a,b) returns 0 
+  - Leave a and b unchanged with respect to each other
+
+ - If compareFunc(a,b) returns greater than 0
+  - Sort b before a
+
+```javascript
+const prices = [400.50, 3000, 99.99, 35.99, 12.00, 9500];
+
+const ascSort = prices.sort((a,b) => a - b); // this way we're sorting in ascending order. From smallest to largest.
+// [12, 35.99, 99.99, 400.5, 3000, 9500]
+
+const descSort = prices.sort((a,b) => b - a); // this way we're sorting in descendin order. From largest to smallest. 
+// [9500, 3000, 400.5, 99.99, 35.99, 12]
+```
+
+And last but not least...
+
+## Reduce!
