@@ -2344,3 +2344,136 @@ const descSort = prices.sort((a,b) => b - a); // this way we're sorting in desce
 And last but not least...
 
 ## Reduce!
+
+> Reduce executes a reducer function on each element of the array, resulting in a single value. 
+
+Applications for reduce include stuff like, summing elements from an array. 
+Or, finding the maximum value in an array.
+Or, Reducing an array of 100 numbers down to 1 Maximum. 
+
+```javascript
+// accumulator is the variable that will store the end result of reduce.
+// currentValue represents each individual element in the array.
+[3, 5, 7, 9, 11].reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+});
+```
+
+Callback   | accumulator | currentValue | return value
+-----------|             |              |
+first call | 3           | 5            | 8
+-----------|             |              |
+second call| 8           | 7            | 15
+-----------|             |              |
+third call | 15          | 9            | 24
+-----------|             |              |
+fourth call| 24          | 11           | 35
+
+**Now, Let's see how to find the maximum value in an array.**
+
+```javascript
+let grades = [89, 96, 58, 77, 22, 62, 93, 99, 70];
+
+// in this case the accumulator (i.e. the 1st parameter of the callback) is just tracking the max value.
+const topScore = grades.reduce((max, currVal) => {
+  if (currVal > max) return currVal;
+  return max;
+});
+
+console.log(topScore); // 99
+
+// A shorter option with Math.max and implicit return
+// We can obviously easily modify the below code to find the min value in the array by using Math.ming
+const topScore2 = grades.reduce((max, currVal) => Math.max(max, currVal));
+```
+
+Reduce with initial value. 
+
+```javascript
+// We can also pass as a second parameter to the reduce method an initial value. 
+
+const nums = [1, 2, 3, 4, 5, 6];
+
+const sum = nums.reduce((accumulator, currValue) => {
+  return accumulator + currValue;
+}, 100); // <~ notice the 100 here after the callback 
+
+/**
+ * So, what the second parameter does is, it simply initializes the accumulator variable. 
+ * So this time the accumulator variable will not start with the 1st array elements as it's value but with the value of the parameter passed. i.e. 100 
+ * So our final result that will get returned from the callback would be: 100 + 1 + 2 + 3 + 4 + 5 + 6 = 121.
+*/
+```
+
+Now let's talk about **tallying** in reduce. 
+
+```javascript
+const votes = ['y', 'n', 'n', 'y', 'n', 'y', 'y', 'y', 'n', 'n', 'y'];
+
+const tally = votes.reduce((tally, vote) => {
+  tally[vote] = (tally[vote] || 0) + 1;
+  return tally;
+}, {}); // <~ Initial value: {}, an empty object!
+
+console.log(tally); // {y: 6, n: 5}
+```
+
+So... let's get to the explanation... 
+We first set the tally parameter of the callback to be an empty object. 
+Then we want to count how many yes and no's we have inside our votes array. 
+So we can get to our final object: {y: 6, n: 5} 
+But how do we get there? 
+AFter the initialization of the tally parameter to be an empty object the logic is: 
+Check the tally of vote ~> (first element of the array) ~> 'y'. 
+Is there a 'y' inside the empty object {}? 
+No it's not, so add 1 to it. 
+And now we have: {y: 1} 
+Then check the next element. 
+The next element is 'n'. 
+Is there an 'n' inside: {y: 1}? 
+No there is not, so add 1 to it. 
+So now we have: {y: 1, n: 1}. 
+And we keep progressing like that until our end result. 
+Now let's get to the syntax. 
+First of all what is ```tally[vote]```? 
+Remember that tally is an object and we usually access object properties with the dot (.) operator. So why we're using brackets here? 
+Remember that we can also have an object property written as a string, in our case 'y', 'n' BUT we can't use the dot **.** operator to access object properties that are strings. In that case we use brackets ~> **[]**. So that one thing is out of the way. 
+Another thing is, what about the bellow snippet of code? How does it describe our logic above? 
+
+```javascript
+tally[vote] = (tally[vote] || 0) + 1;
+```
+
+Well the logic we described above could be more easily understanded if we write it as follows: 
+
+```javascript
+votes.reduce((tally, vote) => {
+  if (tally[vote]) // if there is a 'y' or 'n' 
+  {
+    tally[vote]++; // increment it by 1
+  }
+  else // if there is not
+  {
+    tally[vote] = 1; // initialize it
+  }
+
+  return tally; // return the end result after finishing with the whole array.
+}, {});
+```
+
+So how does the above code snippet do the same as the one liner: ```tally[vote] = (tally[vote] || 0) + 1;```?
+
+Well, it all boils down to understand how this works ~> ```(tally[vote] || 0) + 1```
+What we're saying is: in the beggining where we have our empty object, is there a vote of 'y' or 'n'? 
+No, there is not so ```tally[vote]``` becomes 0. 
+And now we have: ```(0 || 0) + 1``` 
+0 || 0 gives us 0 and + 1 gives us 1 
+And thus we now have: {y: 1} for the first element. 
+The same operation will be handled for the 'n' vote. 
+So now we have: {y: 1, n: 1}
+The next step is:
+```tally[vote]``` now becomes 1 when we encounter another 'y' or 'n' and so we have: 
+1 || 0 which gives us (1) + 1 = 2 
+And so now we have: {y: 2, n:1}
+And thus we will continue like that until our end result...
+
