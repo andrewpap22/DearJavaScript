@@ -1,11 +1,11 @@
-# JavaScript Programming Language 
+# JavaScript Programming Language
 
 > This one will be a JavaScript `Notebook` covering some basic features of the JavaScript programming language and some more **advanced** ones.
- 
+
  [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](http://goldsborough.mit-license.org)
  [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 
-# Terminology 
+# Terminology
 ## What's the difference???
 
  - `JAVASCRIPT`
@@ -14,12 +14,12 @@
  - `ES2017`
  - `ES2016`
  - `ES2015`
- - `ES5?` `ES6?` 
+ - `ES5?` `ES6?`
 
 JavaScript is implemented by all the different browsers out there. And it's up to those browsers to implement new features of the language. <br>
 So, the way it all works is first of all based on [ECMA](https://www.ecma-international.org/), which is an organization that creates many different standards for technologies. <br>
 
- - Now, what about ECMAScript inside there? 
+ - Now, what about ECMAScript inside there?
 
 Basically ECMAScript is a `document that describes how a language should work`, but it is not itself a language that we can download and use. In the end it's essentially a set of rules that a browser like Safari should follow and implement those rules into the JavaScript programming language.<br>
 So, all the above mentioned acronyms basically boil down into the ECMAScript specification document and all are different versions / releases of that document.
@@ -38,11 +38,11 @@ Well there is this [site](https://caniuse.com/), in which we can type in for exa
  - String
  - Boolean
  - Null
- - Undefined 
+ - Undefined
  - Symbol
  - BigInt
 
-## 🔢 Numbers in JS 
+## 🔢 Numbers in JS
 
  - JavaScript has ONE Number type
  - Positive numbers,
@@ -51,16 +51,16 @@ Well there is this [site](https://caniuse.com/), in which we can type in for exa
  - Decimal numbers.
 
 ```javascript
-// creates a comment, which JS will ignore 
+// creates a comment, which JS will ignore
 /*
  * This would be a multiline comment in JS.
  * In JS we have all the basic math operation you would expect...
 */
-50 + 5 // addition 
+50 + 5 // addition
 90 - 1 // subtraction
 11111 * 7 // multiplication
 400 / 5 // division
-25 % 2 // modulo 
+25 % 2 // modulo
 2 ** 3 // exponential operator
 ```
 
@@ -80,41 +80,41 @@ NaN is a numeric value that represents something that is not a number.
 
 > Variables are like `labeled jars` for a value in JavaScript
 > We can store a value and give it a name, so that we can...
- 
+
  - recall it
  - use it
  - or change it later on.
 
-## 🗒️ Basic Syntax 
+## 🗒️ Basic Syntax
 
 ```javascript
 let someName = value;
 
 /*
  * In JavaScript as the name of the language itself shows,
- * there is a convention to naming the variables in camelCase 
- * i.e. the casing of the 1st word is all lower and if a second word is to come in it's 1st letter goes Uppercase followed by all lowercase 
+ * there is a convention to naming the variables in camelCase
+ * i.e. the casing of the 1st word is all lower and if a second word is to come in it's 1st letter goes Uppercase followed by all lowercase
  * Example: camelCase
 */
 ```
 
-### Unary Operators 
+### Unary Operators
 
 > Unary Operators are operators where there is only one side.
 
-For example: 
+For example:
 
 ```javascript
 let counter = 0;
 
-counter++; // ++ is a Unary Operator 
+counter++; // ++ is a Unary Operator
 
 // these 2 expressions do not invoke Unary Operators because they have 2 sides. (left and right)
-counter = counter + 1; 
-counter += 1; 
+counter = counter + 1;
+counter += 1;
 ```
 
-## 🛑 CONST 
+## 🛑 CONST
 
 > `const` works just like `let`, except you **CANNOT** change the value
 
@@ -123,7 +123,7 @@ const hens = 4;
 hens = 20; // [!] Error
 ```
 
-## Var 
+## Var
 
 > Before let & const, var was the only way of declaring a variable. These Days, there isn't really a reason to use it.
 
@@ -163,7 +163,7 @@ numDonuts = 22; // back to number :)
 
 # 📜 Strings
 
-In JavaScript string are pieces of text, or string of characters. 
+In JavaScript string are pieces of text, or string of characters.
 
 > We wrap then in quotes
 
@@ -176,7 +176,7 @@ let animal = 'Fox' // single quotes work as well
 
 let bad = "this is wrong'; // [!] Error
 
-let quotesInsideQuotes = "We can do it 'like this'!"; 
+let quotesInsideQuotes = "We can do it 'like this'!";
 
 let quotesInsideQuotesVol2 = 'Or like "this"!';
 ```
@@ -195,7 +195,7 @@ let fullName = firstName + lastName; // Matsi Matsi
 let test = "hi" + 1; // will turn 1 into string and result into: hi1
 ```
 
-### Strings are Indexed! 
+### Strings are Indexed!
 
 |C|H|I|C|K|E|N|
 |-|-|-|-|-|-|-|
@@ -203,19 +203,19 @@ let test = "hi" + 1; // will turn 1 into string and result into: hi1
 
 > Each character has a corresponding index (a positional number)
 
- - We can get the length of the string by using the `.length` property. 
+ - We can get the length of the string by using the `.length` property.
 
  ```javascript
  "hello".length // 5
  ```
 
- Let's now say we have the following string: 
+ Let's now say we have the following string:
 
  ```javascript
  let myString = "My beautiful string.";
  ```
 
- We can do the following things: 
+ We can do the following things:
 
  ```javascript
  // 1. Get the length of the string
@@ -233,7 +233,7 @@ let test = "hi" + 1; // will turn 1 into string and result into: hi1
 
  > `Note:` in javaScript you can NOT change a single character in a string. The strings in javaScript are immutable. There are other ways dealing with this as we'll see later on.
 
-## String Methods 
+## String Methods
 
 Strings come with a set of built-in methods, which are actions that can be performed on or with that particular string.
 
@@ -242,15 +242,15 @@ We can do things like...
  - Replacing parts of a string
  - Changing case (upper/lower)
 
-So, there are quite a few built in methods that we can perform on strings in JS and we can have a look here ~> [info](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) about them. 
+So, there are quite a few built in methods that we can perform on strings in JS and we can have a look here ~> [info](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) about them.
 
-The syntax looks like this: 
+The syntax looks like this:
 
 ```javascript
 str.method();
 ```
 
-Example: 
+Example:
 
 ```javascript
 let msg = "you are so grounded mr."
@@ -259,7 +259,7 @@ msg.toUpperCase(); // Output: YOU ARE SO GROUNDED MR.
 ```
 
 Remember though that strings in javaScript are immutable so if we check the value of the msg variable it will be the string "you are so grounded mr." all lowercase, even though we used the toUpperCase() method. <br>
-If we want to save the upperCase string we'll have to save it. 
+If we want to save the upperCase string we'll have to save it.
 
 ```javascript
 let upperCaseMsg = msg.toUpperCase();
@@ -271,7 +271,7 @@ let upperCaseMsg = msg.toUpperCase();
 
  - Example1: The **indexOf** method.
 
-The method `indexOf` will tell you where in a string a given substring occurs. 
+The method `indexOf` will tell you where in a string a given substring occurs.
 
 ```javascript
 let tvShow = 'catdog';
@@ -283,7 +283,7 @@ tvShow.indexOf('z'); // -1 (not found)
 
 - Example2: The **slice** method.
 
-It takes slices of an existing string and it gives you a piece of it. 
+It takes slices of an existing string and it gives you a piece of it.
 
 ```javascript
 let str = "supercalifragilisticexpialidocious";
@@ -304,7 +304,7 @@ annoyingLaugh.replace("teehee", "haha"); // "haha so funny! teehee!"
 // [!] Notice that it only replaces the first instance.
 ```
 
-## ❓Quiz Time! 
+## ❓Quiz Time!
 
  - *What is the value of `age`?*
 
@@ -358,31 +358,31 @@ let index = yell.indexOf('!');
 "GARBAGE!".slice(2).replace("B", '');
 ```
 
-## String Escapes 
+## String Escapes
 
  1. \n - newline
  2. \' - single quote
  3. \" - double quote
  4. \\ - backslash
 
-Let's say I want to have a single quote inside a string in JS. 
-For example: 
+Let's say I want to have a single quote inside a string in JS.
+For example:
 
 ```javascript
-'he said I aint happy' // If I go and add a ' at ain't it will not work. 
+'he said I aint happy' // If I go and add a ' at ain't it will not work.
 
-// to make it work properly we have to use the single quote character escape like this: 
+// to make it work properly we have to use the single quote character escape like this:
 'he said I ain\'t happy' // and we'll get our result as expected.
 ```
 
 We can find more information about escape characters on the mdn docs ~> [link](https://developer.cdn.mozilla.net/nl/docs/Web/JavaScript/Reference/Global_Objects/String#Escape_notation)
 
 
-## String Template Literals 
+## String Template Literals
 
-Template literals are strings that allow embedded expressions, which will be evaluated and then turned into a resulting string. 
+Template literals are strings that allow embedded expressions, which will be evaluated and then turned into a resulting string.
 
- - Example: 
+ - Example:
 
 ```javascript
 `I counted ${3 + 4} sheep`; // Output: "I counted 7 sheep"
@@ -393,7 +393,7 @@ Template literals are strings that allow embedded expressions, which will be eva
 
  - *The back-tick key is usually above the tab key*
 
- - Another example: 
+ - Another example:
 
 ```javascript
 let userName = "Ziggy31";
@@ -402,7 +402,7 @@ let userName = "Ziggy31";
 `GAME OVER ${userName.toUpperCase()}` // "GAME OVER ZIGGY31"
 ```
 
- - Yet another example: 
+ - Yet another example:
 
 ```javascript
 let item = "cucumbers;
@@ -432,17 +432,17 @@ loggedInUser = "Alan Rickman";
 ```
 
 ```javascript
-let bla; 
+let bla;
 // if we console.log bla we will get that it is undefined.
 ```
 
 Both null and undefined kinda represent the same thing. The difference is that when we declare a variable and we don't initialize it, it's value is undefined, whereas with the null, we do it on purpose. We set a variable to null (i.e. the variables equals nothing) so that we know it's an 'empty' variable that we can use for whatever purposes we would like to, later on...
 
-## The Math Object. 
+## The Math Object.
 
 Contains properties and methods for mathematical constants and functions.
 
- - Example: 
+ - Example:
 
 Let's say we want to generate random numbers between 1 and 10
 
@@ -471,7 +471,7 @@ typeof true; // boolean
 
 ## parseInt & parseFloat
 
-Use to parse strings into numbers, but watch out for NaN! 
+Use to parse strings into numbers, but watch out for NaN!
 
 ```javascript
 parseInt("24"); // 24
@@ -485,9 +485,9 @@ parseFloat("I ate 3 shrimps") // NaN (not a number)
 
 # Boolean Logic
 
-## Comparisons 
+## Comparisons
 
-### Comparison operators 
+### Comparison operators
 
 ```javascript
 > // greater than
@@ -502,7 +502,7 @@ parseFloat("I ate 3 shrimps") // NaN (not a number)
 
  - **`All comparison operators return a boolean in JavaScript (true or false)`**
 
-For example: 
+For example:
 
 ```javascript
 -2 > 1 // false
@@ -516,49 +516,49 @@ We can also compare strings with the comparison operators. The thing to note her
 
 #### Double equals (==)
 
-> Usually referred to as the equality operator. 
+> Usually referred to as the equality operator.
 - It checks for equality of value but not equality of type.
-- It coerces both values to the same type and then compares them. 
-- This can lead to some unexpected results! 
+- It coerces both values to the same type and then compares them.
+- This can lead to some unexpected results!
 
 Examples:
 ---------
 
 ```javascript
 4 == 4 // true
-'A' == 'A' // true 
-false == false // true 
+'A' == 'A' // true
+false == false // true
 
 7 == '7' // true
 ```
 
 The last one, compares the integer 7 to the character '7' and it returns us true. But these 2 are obviously not equal and the programmer didn't want them to be true as well. But remember! Double equals will not see the types of comparison and it will try to convert both sides of comparison to the same type and thus return us true in that particular case.
 
-- Some more examples: 
+- Some more examples:
 
 ```javascript
 0 == ""; // true
 
-0 == false; // true 
+0 == false; // true
 
 null == undefined; // true
 ```
 
-Now, why the 3 above comparisons are true? 
-Because, javaScript behind the scenes will translate and consider the programmer when making the particular comparisons to have meant for example that when he compares 0 to false he actually translates in his mind 0 to be false as that's the case usually and that's what exactly javaScript is trying to do as well behind the scenes. Same goes for the other 2 comparisons, but this might not always be the case. Sometimes we might want 0 to mean the integer 0 and not false and that's exactly the reasons why we have and can use both of them as different things. So based on the above logic that's why is almost always 99% of the time better to use triple equals (===) and strict not equals as well (!==) and completely ignore == and != as we're mentioning below. 
+Now, why the 3 above comparisons are true?
+Because, javaScript behind the scenes will translate and consider the programmer when making the particular comparisons to have meant for example that when he compares 0 to false he actually translates in his mind 0 to be false as that's the case usually and that's what exactly javaScript is trying to do as well behind the scenes. Same goes for the other 2 comparisons, but this might not always be the case. Sometimes we might want 0 to mean the integer 0 and not false and that's exactly the reasons why we have and can use both of them as different things. So based on the above logic that's why is almost always 99% of the time better to use triple equals (===) and strict not equals as well (!==) and completely ignore == and != as we're mentioning below.
 
 ### Triple equals (===)
 
-Checks for equality of value AND the type. 
+Checks for equality of value AND the type.
 
 ```javascript
 5 === 5; // true
 1 === 2; // false
-2 === '2'; // false 
+2 === '2'; // false
 false === 0; // false
 ```
 
-Same logic applies for != and !== 
+Same logic applies for != and !==
 
 ```javascript
 10 != '10'; // false (but probably we want true, 10 and '10' to be different things)
@@ -566,50 +566,50 @@ Same logic applies for != and !==
 10 !== '10'; // true
 ```
 
-> Rule of thumb: 99% of the time we're going and must use the triple equals === and the strict not equals !== operators. As mentioned above it's best practice to care about the type when doing comparisons. 
+> Rule of thumb: 99% of the time we're going and must use the triple equals === and the strict not equals !== operators. As mentioned above it's best practice to care about the type when doing comparisons.
 
-Why the above statement holds? 
+Why the above statement holds?
 
 - Example:
 
 ```javascript
-// We have the following variable: 
+// We have the following variable:
 
-let isTheUserLoggedIn = false; 
+let isTheUserLoggedIn = false;
 
-// Now we're comparing: 
+// Now we're comparing:
 
 isTheUserLoggedIn == false; // We're getting true
 
-// Now let's say someone writes it this way: 
+// Now let's say someone writes it this way:
 
-isTheUserLoggedIn = 0; 
+isTheUserLoggedIn = 0;
 
-// And then: 
+// And then:
 
 isTheUserLoggedIn == false; // We're still getting true
 
-// ??? 
+// ???
 
 /* As we saw earlier by assigning 0 to the particular variable it doesn't mean that we mean it to be false. We might, but we also might not. So what if we wanted to treat 0 as zero and not as false? JavaScript behind the scenes will try to translate on the double equality comparison the zero as false and that might not be exactly what we want to and thus result in unexpected behavior. That's why it's 99% better to use the strict comparison operators === and !== than the == and !=. */
 ```
 
-## How to write javaScript code in a file and compile and execute it in the browser. 
+## How to write javaScript code in a file and compile and execute it in the browser.
 
-So, we can't simply create a .js file for example app.js and write our code in there and throw it at our browser to compile and execute it. That's not how things will work. 
+So, we can't simply create a .js file for example app.js and write our code in there and throw it at our browser to compile and execute it. That's not how things will work.
 
 Browsers don't know what to do with plain .js files.
-We have to first make an html file that links with a .js file, because browsers know how to render an html file and whatever else files are linked with that particular html file we're throwing to our browser. 
+We have to first make an html file that links with a .js file, because browsers know how to render an html file and whatever else files are linked with that particular html file we're throwing to our browser.
 
- - Example below: 
+ - Example below:
 
-Consider the 2 below files, for example inside the same directory. 
+Consider the 2 below files, for example inside the same directory.
 
 1. index.html
 2. app2.js
 
-Pay attention inside the index.html file and you'll find the following line of code: `<script src="app2.js"></script>`. What this does is, it is linking the app2.js file with our index.html file and if we open our html file inside the browser we'll see an alert with a message, which is the exact message we wrote at our app2.js file and that indicates that everything works successfully and our browser has rendered our html file and compiled and run our app.js file. 
-So that's the workaround of writing javascript scripts and 'throwing' 'em at our browsers. 
+Pay attention inside the index.html file and you'll find the following line of code: `<script src="app2.js"></script>`. What this does is, it is linking the app2.js file with our index.html file and if we open our html file inside the browser we'll see an alert with a message, which is the exact message we wrote at our app2.js file and that indicates that everything works successfully and our browser has rendered our html file and compiled and run our app.js file.
+So that's the workaround of writing javascript scripts and 'throwing' 'em at our browsers.
 *You might also see that we have another script commented on our html file. Instead of creating an html file for each and every of our .js files we can simply swap the names of our .js files inside the script tag and compile each time a different js file inside the same html file.*
 
 ```html
@@ -626,7 +626,7 @@ So that's the workaround of writing javascript scripts and 'throwing' 'em at our
   <script src="app2.js"></script>
 </head>
 <body>
-  
+
 </body>
 </html>
 ```
@@ -637,7 +637,7 @@ So that's the workaround of writing javascript scripts and 'throwing' 'em at our
 alert("It's working!");
 ```
 
-> So from now and on, we’ll be creating an html file and we’ll be linking that file with a script .js file so we can give it to our browser to compile and run it and test our code with it. 
+> So from now and on, we’ll be creating an html file and we’ll be linking that file with a script .js file so we can give it to our browser to compile and run it and test our code with it.
 
 **From here on I'll be writing the information about each and every topic of discussion on the corresponding .js files inside comments alongside the code for better understanding and I'll be providing the links for the specific files under the title of each and every topic.**
 
@@ -669,12 +669,12 @@ alert("It's working!");
   </li>
 </ul>
 
-## ❓ Quiz 
+## ❓ Quiz
 
 > Go study the contents inside the app.js file of the Boolean logic section before trying to answer the below
 
 ```javascript
-let x = 7; 
+let x = 7;
 
 // what does this evaluate to?
 x == 7 || x === 3 && x > 10;
@@ -684,14 +684,14 @@ More information on operator precedence can be found [here](https://developer.mo
 
 ## Next Chapter: `Arrays!`
 
-So Arrays are **ordered collections of values.** 
-We can think of them as: 
+So Arrays are **ordered collections of values.**
+We can think of them as:
  - List of comments on IG post.
  - Collection of levels in a game
  - Songs in a playlist
- - pills packed in many boxes in a row. 
+ - pills packed in many boxes in a row.
 
-So to create an array: 
+So to create an array:
 
 ```javascript
 // To make an empty array
@@ -707,18 +707,18 @@ let lottoNums = [19, 22, 56, 12, 51];
 let stuff = [true, 68, 'cat', null];
 ```
 
-> Remember that arrays are indexed! 
+> Remember that arrays are indexed!
 
-For example, let's say we have: 
+For example, let's say we have:
 
 ```javascript
 let colors = ["red", "blue", "green", "violet", "yellow"];
 ```
 
-If we want to access the 1st element of the array we should do something like: 
+If we want to access the 1st element of the array we should do something like:
 
 ```javascript
-console.log(colors[0]); 
+console.log(colors[0]);
 
 // the above line will print us ~> red
 
@@ -747,21 +747,21 @@ colors[3] = "green";
 colors[5]; // undefined (our array has 5 elements so the indexes are 0-4)
 colors[5] = "violet";
 
-// after adding the violet to the 5th position of the array (6th element) our array is modified as: 
+// after adding the violet to the 5th position of the array (6th element) our array is modified as:
 // ["red", "orange", "yellow", "green", "blue", "violet"]
 ```
 
 Pay your attention in the example above. We has an array of 5 elements i.e. 5 indices 0-4 and we added another element at the end of the array by typing: **colors[5] = "violet";**.
-But in that case we simply counted that we had 5 elements so 0-4 and then we simply manually typed the number 5 index and that resulted in adding another element after the last element of the array. 
-But what if we don't have a way to count the elements of the array? 
-Say for example that we get our data from a user, or from a database, how can we then add a new element at the end of the array? 
-Well... we can use once again the **.length** property! 
+But in that case we simply counted that we had 5 elements so 0-4 and then we simply manually typed the number 5 index and that resulted in adding another element after the last element of the array.
+But what if we don't have a way to count the elements of the array?
+Say for example that we get our data from a user, or from a database, how can we then add a new element at the end of the array?
+Well... we can use once again the **.length** property!
 
 ```javascript
-colors[colors.length] = "purple"; 
+colors[colors.length] = "purple";
 ```
 
-> Notice that we don't have to do a -1 here because we simply want to add a new element **after** the currently last item of the array, so it becomes our new last element. 
+> Notice that we don't have to do a -1 here because we simply want to add a new element **after** the currently last item of the array, so it becomes our new last element.
 
 ## Array Methods
 
@@ -805,16 +805,16 @@ const colors = [
 ];
 ```
 
-How do we access an element of an array inside another array? 
+How do we access an element of an array inside another array?
 
 ```javascript
 // Let's say on the colors array we want to access the element ~> yet another element
-// First we see that it is a string inside an array which array is a second element of our colors array. 
-// So first to access that 2nd element we can do: 
+// First we see that it is a string inside an array which array is a second element of our colors array.
+// So first to access that 2nd element we can do:
 
 console.log(colors[1]); // will print: ["another element", "yet another element"]
 
-// Now to access the yet another element which is the second element of that array we have to do: 
+// Now to access the yet another element which is the second element of that array we have to do:
 console.log(colors[1][1]) // this will print: yet another element.
 
 /*
@@ -825,9 +825,9 @@ colors[1][1] = "we changed the yet another element.";
 console.log(colors[1][1]); // this will now print: we changed the yet another element instead of: yet another element
 ```
 
-A good reason to have nested arrays is when you want to display a grid for example, like a chess grid, or something else similar. 
+A good reason to have nested arrays is when you want to display a grid for example, like a chess grid, or something else similar.
 
-Let's say we have the below tic - tac - toe picture 
+Let's say we have the below tic - tac - toe picture
 
   o |    | x
 --------------
@@ -836,7 +836,7 @@ Let's say we have the below tic - tac - toe picture
  x |  o |
 --------------
 
-We can describe the above picture with nested arrays like following: 
+We can describe the above picture with nested arrays like following:
 
 ```javascript
 const board = [
@@ -851,29 +851,29 @@ And now let's go to...
 # Objects ❗️
 
 An object allows us to store data where we can associate things and group pieces of data together but rather than simply ordering data, based of an index i.e the 0th, the 1st, the 2nd and so on... (like an array)
-We can instead specify labels. 
-For example totalSteps we made equals 1234. 
+We can instead specify labels.
+For example totalSteps we made equals 1234.
 So we have labels and values for the labels.
 
 ```javascript
 const fitBitData = {
   totalSteps : 1324,
   totalMiles : 222,
-  avgCalorieBurn : 12341324, 
+  avgCalorieBurn : 12341324,
   WorkoutsThisWeek : "5 of 7",
   avgGoodSleep : "2:13"
 };
 ```
 
-Basically Objects at a high level are: 
+Basically Objects at a high level are:
 
- - Objects are collections of properties. 
- - Properties are a key - value pair. 
+ - Objects are collections of properties.
+ - Properties are a key - value pair.
  - Rather than accessing data using an index, we use custom keys.
 
-How can we access data inside an object? 
+How can we access data inside an object?
 
- - Using the dot . syntax 
+ - Using the dot . syntax
 
 ```javascript
 // Let's say we have the fitBitData object we created above and we want to access the value of the totalMiles
@@ -883,8 +883,8 @@ console.log(fitBitData.totalMiles); // will print: 222
 
 > Keys in javaScript objects are automatically converted to strings!!!
 
-We also have another way to access data from objects simply because of the above statement! 
-Example: 
+We also have another way to access data from objects simply because of the above statement!
+Example:
 
 ```javascript
 const palette = {
@@ -901,9 +901,9 @@ let color = "yellow";
 console.log(palette[color]); // will print: #f9ca24
 ```
 
-Why do we have the brackets [] notation as well to access data in objects?? 
+Why do we have the brackets [] notation as well to access data in objects??
 
-Let's say we have the following object: 
+Let's say we have the following object:
 
 ```javascript
 const numbers = {
@@ -913,15 +913,15 @@ const numbers = {
   red : "#eb4d4b"
 };
 
-// if we try to do: numbers.100; 
-// we might expect to get one hundred but instead we will get an error. 
-// the same goes for numbers.76 trombones; 
+// if we try to do: numbers.100;
+// we might expect to get one hundred but instead we will get an error.
+// the same goes for numbers.76 trombones;
 
-// but if we do: 
+// but if we do:
 
-console.log(numbers["76 trombones"]); // it will print: great song! 
+console.log(numbers["76 trombones"]); // it will print: great song!
 
-// we can even do something like this: 
+// we can even do something like this:
 
 console.log(numbers["re" + "d"]); // it will print out #eb4d4b
 ```
@@ -937,7 +937,7 @@ const fitBitData = {
   avgGoodSleep : "2:13"
 };
 
-// Updating properties: 
+// Updating properties:
 fitBitData.workoutsThisWeek = "6 of 7";
 fitBitData.totalMiles += 22;
 
@@ -984,31 +984,31 @@ const student = {
 
 // Short Quiz: How can we access the midterm and final properties, add their values and divide them by 2?
 
-// Answer: 
+// Answer:
 
 let mid = student.exams.midterm;
 let fin = student.exams.final;
 
 console.log((mid + fin) / 2);
 
-// We want to print out the string Art of the array located in the object above: 
+// We want to print out the string Art of the array located in the object above:
 
-// Answer: 
+// Answer:
 
 console.log(student.strengths[1]);
 ```
 
-## Arrays and Objects Equality 
+## Arrays and Objects Equality
 
 Whatever we will discuss bellow for the arrays works exactly the same for the objects in javaScript.
 
-So, let's say we have 2 arrays and we want to check if they are the same: 
+So, let's say we have 2 arrays and we want to check if they are the same:
 
 ```javascript
 const array1 = [1, 2, 3];
 const array2 = [1, 2, 3];
 
-// if we try to do: 
+// if we try to do:
 
 if (array1 === array2)
 {
@@ -1016,28 +1016,28 @@ if (array1 === array2)
 }
 else
 {
-  console.log(false); // this block will be executed and false will be printed. 
+  console.log(false); // this block will be executed and false will be printed.
 }
 ```
 
-What's the reason for the above code sample? 
-We have to understand something really important here! 
+What's the reason for the above code sample?
+We have to understand something really important here!
 
-When we declare an array variable in javaScript, it is **NOT** the actual array that's store in that variable in memory like with a simple string for example, but instead, a reference (memory address) is stored inside that variable that POINTS to the specific array we initialized it with. 
+When we declare an array variable in javaScript, it is **NOT** the actual array that's store in that variable in memory like with a simple string for example, but instead, a reference (memory address) is stored inside that variable that POINTS to the specific array we initialized it with.
 
-So for example the **array1** has store in memory an address like **0xaf12e** and the **array2** has for example another one, let's say **0x0099bef**. 
+So for example the **array1** has store in memory an address like **0xaf12e** and the **array2** has for example another one, let's say **0x0099bef**.
 
-Even though both point to a similar looking array (an array containing 3 elements, ~> 1,2,3) they actually point to different arrays. So if I modify array1 for example, then array2 will not be modified as well. And that makes sense right? 
+Even though both point to a similar looking array (an array containing 3 elements, ~> 1,2,3) they actually point to different arrays. So if I modify array1 for example, then array2 will not be modified as well. And that makes sense right?
 
-So finally when we do **array1 === array2** we're actually doing: **0xaf12e === 0x0099bef**, which obviously is not the case! 
+So finally when we do **array1 === array2** we're actually doing: **0xaf12e === 0x0099bef**, which obviously is not the case!
 
  - !! Quick quiz (try to think for it before checking the answer below.)
- 1. What would be the case where array1 === array2 gives us true?? 
+ 1. What would be the case where array1 === array2 gives us true??
 
 ```javascript
 // Answer
 const array1 = [1, 2, 3];
-const array2 = array1; 
+const array2 = array1;
 
 if (array1 === array2)
 {
@@ -1045,16 +1045,16 @@ if (array1 === array2)
 }
 else
 {
-  console.log(false);  
+  console.log(false);
 }
 ```
 
-Now, try to think what's the difference here. 
-We're assigning to array2 the memory address which array1 contains. 
+Now, try to think what's the difference here.
+We're assigning to array2 the memory address which array1 contains.
 So basically, now both array1, array2 POINT TO the same exact array ~> [1, 2, 3].
 And so the case now is: **array1 === array2 === 0xaf12e**!!!
 
-And if we here try to modify the array2 then array1 will be modified as well and vice versa! 
+And if we here try to modify the array2 then array1 will be modified as well and vice versa!
 
 <hr>
 
@@ -1063,7 +1063,7 @@ And now we're going to enter the world of...
 ## Loops !
 
 ```javascript
-for (let num = 1; num <= 20; num++) 
+for (let num = 1; num <= 20; num++)
 {
   console.log(`${num}x${num} = ${num * num}`);
 }
@@ -1077,7 +1077,7 @@ for (let num = 1; num <= 20; num++)
 */
 ```
 
-### For loops + arrays 
+### For loops + arrays
 
 > To Loop over an array, start at0 and continue to the last index (length - 1)
 
@@ -1086,20 +1086,20 @@ const animals = ['lion', 'fox', 'wolf'];
 
 for (let i = 0; i < animals.length; i++)
 {
-  console.log(i, animals[i]); 
+  console.log(i, animals[i]);
 }
 
 /**
- * output: 
+ * output:
  * 0 lion
  * 1 fox
- * 2 wolf 
+ * 2 wolf
 /
 
 // check the ap.js of the loops module for more examples
 ```
 
-## While Loops 
+## While Loops
 
 > A while loop continues to run as long as its test condition is true
 
@@ -1116,12 +1116,12 @@ The best case scenario to write a while loop is when you don't know exactly the 
 
 > Check the app.js file of this section for a good use case example of a while loop
 
-There is a special keyword in javaScript called **break** and we usually use it to break out of a loop. 
-It is not used commonly in for loops, but it is in while loops. 
+There is a special keyword in javaScript called **break** and we usually use it to break out of a loop.
+It is not used commonly in for loops, but it is in while loops.
 
 > head again to the app.js file of this section for an example.
 
-## For ... of 
+## For ... of
 
 A nice and easy way of iterating over arrays. (or other iterable objects)
 
@@ -1154,7 +1154,7 @@ for (let i = 0; i < subreddits.length; i++)
   console.log(subreddits[i]);
 }
 
-// since for of works with anything iterable, we can use it to iterate through a string also: 
+// since for of works with anything iterable, we can use it to iterate through a string also:
 
 for (let character of "helloThereHowDoYouDo")
 {
@@ -1171,7 +1171,7 @@ const magicSquare = [
 ];
 
 // So, let's say that we want to verify that each row sums up to 15
-// We could do that with a traditional for loop as follows: 
+// We could do that with a traditional for loop as follows:
 
 for (let i = 0; i < magicSquare.length; i++) // iterate through the magicSquare array
 {
@@ -1197,7 +1197,7 @@ for (let row of magicSquare)
   console.log(`${row} summed up to: ${sum}`);
 }
 
-// So it seems like that again using for of is much simpler and less written code. 
+// So it seems like that again using for of is much simpler and less written code.
 
 // But let's now see an example that we might prefer the traditional for loop instead of the for...of
 
@@ -1211,7 +1211,7 @@ const words2 = ["box", "shake", "tab", "berry"];
 
 for (let i  = 0; i < words1.length; i++)
 {
-  console.log(`${words1[i]}${words2[i]}`); 
+  console.log(`${words1[i]}${words2[i]}`);
   /*
    * output:
    * mailbox
@@ -1223,9 +1223,9 @@ for (let i  = 0; i < words1.length; i++)
 
 /*
  * we could not do the same here with the for of even if we tried...
- * Why?? 
+ * Why??
  * Because with the traditional for loop we have the index number of the array, and that is ~> i
- * But with the for of loop we won't have that index to provide the words2 array with and print simultaneously, we would only have each and every element, but not the array index of each and every element! 
+ * But with the for of loop we won't have that index to provide the words2 array with and print simultaneously, we would only have each and every element, but not the array index of each and every element!
 */
 ```
 
@@ -1238,17 +1238,17 @@ const movieReviews = {
   Amelie : 8,
   "In Bruges" : 10,
   "Kill Bill" : 9.5,
-  Coraline : 9.0 
+  Coraline : 9.0
 };
 
 /*
  * Objects are not iterable so to loop through them (through their keys or their values or both)
- * we will have to use 2 built in methods: 
+ * we will have to use 2 built in methods:
  * 1. Object.keys()
  * 2. Object.values()
 */
 
-// Examples: 
+// Examples:
 
 for (let movie of Object.keys(movieReviews))
 {
@@ -1256,7 +1256,7 @@ for (let movie of Object.keys(movieReviews))
   console.log(movie, movieReviews[movie]); // will also print the value of each key
 }
 
-// let's say we want to calculate the average rating of the movies: 
+// let's say we want to calculate the average rating of the movies:
 
 const ratings = Object.values(movieReviews);
 
@@ -1278,7 +1278,7 @@ And lastly...
 
 ```javascript
 /*
- * for (variable in object) 
+ * for (variable in object)
  * {
  *   statement;
  * }
@@ -1287,7 +1287,7 @@ And lastly...
 // a for in loop will loop over the keys! The properties in an object
 // example
 
-const jeopardyWinnings = 
+const jeopardyWinnings =
 {
   regularPlay : 2522700,
   watsonChallenger : 12341234,
@@ -1306,10 +1306,10 @@ And now... the last big topic...
 
 # Functions!!!
 
-> Functions are reusable procedures and allow us to write reusable, modular code. 
-> We define a "chunk" of code that we can then execute at a later point. 
+> Functions are reusable procedures and allow us to write reusable, modular code.
+> We define a "chunk" of code that we can then execute at a later point.
 
-Define a function in javaScript: 
+Define a function in javaScript:
 
 ```javascript
 /*
@@ -1319,9 +1319,9 @@ Define a function in javaScript:
  * }
 */
 
-// example: 
+// example:
 
-function grumpus() 
+function grumpus()
 {
   console.log("qwerty");
   console.log("qwerty2");
@@ -1335,25 +1335,25 @@ grumpus(); // now we'll see the 3 logs.
 
 Let's try to make another function.
 
-We'll call it a Dice Roll function. 
+We'll call it a Dice Roll function.
 
 ```javascript
-function rollDie 
+function rollDie
 {
   let roll = Math.floor(Math.random() * 6) + 1; // generating random numbers from 1 to 6
   console.log(`Rolled: ${roll}`);
 }
 
-// And now we have to 'execute', call the function in order to see the output 
+// And now we have to 'execute', call the function in order to see the output
 rollDie();
 ```
 
-## Function Arguments: 
+## Function Arguments:
 
-> Arguments is a fancy term for parameters. 
+> Arguments is a fancy term for parameters.
 
 ```javascript
-// Example: 
+// Example:
 
 function greet(nickname)
 {
@@ -1361,7 +1361,7 @@ function greet(nickname)
 }
 
 const name = "Mirella";
-greet(name); 
+greet(name);
 
 // will print out: Hi, Mirella!
 ```
@@ -1374,9 +1374,9 @@ function sum(x, y)
   console.log(x + y);
 }
 
-// We have to keep in mind that the order of the arguments matters! 
+// We have to keep in mind that the order of the arguments matters!
 
-// Example: 
+// Example:
 
 function divide(a, b)
 {
@@ -1388,11 +1388,11 @@ divide(1, 4); // -> 1/4 = 0.25
 divide(4, 1); // -> 4/1 = 4
 ```
 
-### RETURN 
+### RETURN
 
-> Built - in methods **return** values when we call them. 
+> Built - in methods **return** values when we call them.
 
-We can store those values: 
+We can store those values:
 
 ```javascript
 const yell = "I will end you".toUpperCase();
@@ -1427,7 +1427,7 @@ function isPurple(color)
   }
 }
 
-// another and more elegant way of writing the above function: 
+// another and more elegant way of writing the above function:
 
 function isPurple(color)
 {
@@ -1438,14 +1438,14 @@ function isPurple(color)
   return false;
 }
 
-// yet another shorter way: 
+// yet another shorter way:
 
 function isPurple(color)
 {
   return color.toLowerCase() === "purple"; // if the string passed is purple ~> true will be returned, else ~> false will be returned.
 }
 
-// Now we'll write a more 'advanced' purple color checking function: 
+// Now we'll write a more 'advanced' purple color checking function:
 
 /**
  * We'll pass an array to our function and
@@ -1471,23 +1471,23 @@ function containsPurple(arr)
 
 > ❗️ Please do try the challenges yourself before going to the app.js file and have a look on the solution.
 
- 1. Write a isValidPassword function. It accepts 2 arguments: password and username. The password must: 
+ 1. Write a isValidPassword function. It accepts 2 arguments: password and username. The password must:
   - be at least 8 characters
   - cannot contain spaces
   - cannot contain the username
-  - If all the requirements are met, return true. Otherwise, return false. 
-  - isValidPassword("89F@#$", "dogLuvr"); // true 
+  - If all the requirements are met, return true. Otherwise, return false.
+  - isValidPassword("89F@#$", "dogLuvr"); // true
   - isValidPassword("dogLuvr123", "dogLuvr"); // false
 
- 2. Write a function to find the average value in an array of numbers. 
+ 2. Write a function to find the average value in an array of numbers.
 
- 3. A pangram is a sentence that contains every letter of the alphabet like: 
+ 3. A pangram is a sentence that contains every letter of the alphabet like:
   - "The quick brown fox jumps over the lazy dog"
   - > Write a function called isPangram, which checks to see if a given sentence contains every letter of the alphabet. (Make sure you ignore string casing!!)
   - Example: isPangram("The five boxing wizards jump quickly"); // true
   - isPangram("The five boxing wizards jump quick"); // false
 
- 4. Write a getCard() function which returns a random playing card object, like: 
+ 4. Write a getCard() function which returns a random playing card object, like:
   - {
       value : 'K',
       suit  : 'clubs'
@@ -1498,9 +1498,9 @@ function containsPurple(arr)
 
 <hr>
 
-## An advanced look at functions!  
+## An advanced look at functions!
 
-### Scope 
+### Scope
 
 > Variable "visibility"
 
@@ -1519,10 +1519,10 @@ function helpMe()
 console.log(msg); // !! msg NOT defined!
 
 /**
- * msg variable is scoped to the helpMe function only! 
+ * msg variable is scoped to the helpMe function only!
 */
 
-// another example: 
+// another example:
 
 let bird = "mandarin duck";
 
@@ -1547,7 +1547,7 @@ if (radius > 0)
   let circ = 2 * PI * radius;
 }
 
-console.log(radius); // 8 
+console.log(radius); // 8
 console.log(PI); // NOT DEFINED
 console.log(circ); // NOT DEFINED
 
@@ -1555,13 +1555,13 @@ console.log(circ); // NOT DEFINED
  * PI & circ are scoped to the if BLOCK
 */
 
-// ! IMPORTANT 
+// ! IMPORTANT
 
 if (true)
 {
   let letVariable = 1;
   const constVariable = 2;
-  var varVariable = 3; 
+  var varVariable = 3;
 }
 
 console.log(letVariable); // ERROR, NOT DEFINED
@@ -1569,10 +1569,10 @@ console.log(constVariable); // ERROR, NOT DEFINED
 console.log(varVariable); // 3
 
 /**
- * So we can see that let const and var have different scope rules. 
- * When we declare a variable inside a scope, i.e a function scope or a block of code (if, for, while, etc..) with let and const then those variables are scoped only to the above mentioned scopes. 
+ * So we can see that let const and var have different scope rules.
+ * When we declare a variable inside a scope, i.e a function scope or a block of code (if, for, while, etc..) with let and const then those variables are scoped only to the above mentioned scopes.
  * But! When we declare a variable with var, then var variables are only scoped within functions! They're not scoped in block of codes and thus we can access it as we see in the above example.
-*/ 
+*/
 ```
 
 ## Lexical Scope
@@ -1593,19 +1593,19 @@ function outer()
 
 console.log(hero); // NOT DEFINED.
 
-// what if we try to call inner() outside of the outer() function? 
+// what if we try to call inner() outside of the outer() function?
 
-inner(); // ERROR! inner is not defined! 
+inner(); // ERROR! inner is not defined!
 
-// So we can have access to the inner function ONLY inside the outer function. 
+// So we can have access to the inner function ONLY inside the outer function.
 ```
 
-## Function Expressions 
+## Function Expressions
 
 There another syntax we can use to define functions
 
 ```javascript
-const square = function (num) 
+const square = function (num)
 {
   return num * num;
 }
@@ -1613,7 +1613,7 @@ const square = function (num)
 square(7); // 49
 ```
 
-How can we store a function in a variable? 
+How can we store a function in a variable?
 Well... in javaScript **functions are objects!**
 
 And that means that... we can store 10 of them in an array for example...  we can pass them as arguments... and so on..
@@ -1645,13 +1645,13 @@ const divide = function(x, y)
 
 const operations = [add, subtract, multiply, divide]; // passing the functions (which are objects) as array elements.
 
-// And for example we can call them now with 2 different ways: 
+// And for example we can call them now with 2 different ways:
 
-// 1. 
-add(11,11); 
+// 1.
+add(11,11);
 
-// 2. 
-operations[0](100,4); 
+// 2.
+operations[0](100,4);
 
 // The above 2 will call the add function and give us 22 and 104.
 
@@ -1677,30 +1677,30 @@ Also, we can store functions in objects... (so basically store objects inside ob
 
 ```javascript
 const thing = {
-  doSomething : multiply // so the value of the doSomething property is the multiply function. 
+  doSomething : multiply // so the value of the doSomething property is the multiply function.
 }
 
-// so if we do: 
+// so if we do:
 
 console.log(thing.doSomething) // we'll get the multiply function as an output
 
-// but if we do: 
+// but if we do:
 
 console.log(thing.doSomething(50, 2)); // we'll get: 100
 ```
 
-And now, right here we just created our very first method! 
+And now, right here we just created our very first method!
 
 By adding a function to an object ~> thing.doSomething(50,2) we're creating a method.
 
-Just like we have used the ~> "somestring".toUpperCase(); 
+Just like we have used the ~> "somestring".toUpperCase();
 Notice we're doing the same thing!
 
 > Next topic ~> Functions as arguments!
 
 So, what are **higher order functions**
 They're functions that operate on/with other functions.
-They can: 
+They can:
  - Accept other functions as arguments
  - Return a function!
 
@@ -1719,10 +1719,10 @@ function laugh()
 
 /**
  * so, here we pass the function laugh as an arugment to the callThreeTimes function.
- * And what it does, is it calls 3 times the function that was passed as an argument. 
+ * And what it does, is it calls 3 times the function that was passed as an argument.
  * And so we'll see at the console the string "AHAHAHAHAHA" printed 3 times.
 */
-callThreeTimes(laugh); 
+callThreeTimes(laugh);
 ```
 
 ```javascript
@@ -1740,7 +1740,7 @@ function repeat_n_Times(action, num)
  * And we're simply looping up until the number passed and calling the function passed as an argument
  * and so we'll now see the string "HAHAHAHAH" printed 22 times.
 */
-repeat_n_Times(laugh, 22); 
+repeat_n_Times(laugh, 22);
 ```
 
 ```javascript
@@ -1766,7 +1766,7 @@ function pickRandomly(f1, f2)
 }
 ```
 
-Now, we'll see examples of returning functions. 
+Now, we'll see examples of returning functions.
 
 ```javascript
 function makeBetweenFunc(min, max)
@@ -1783,21 +1783,21 @@ inAgeRange(17); // false
 inAgeRange(68); // true
 ```
 
-Explanation of the above: 
-So we can think of functions returning other functions as a factory that generates functions. 
-If we see our example above, we return an anonymous function and we pass in as an argument a value *val*. 
+Explanation of the above:
+So we can think of functions returning other functions as a factory that generates functions.
+If we see our example above, we return an anonymous function and we pass in as an argument a value *val*.
 Then we do call the makeBetweenFunc and we pass in 2 numbers as arguments and we save the function that makeBetweenFunc returns to a variable. And basically it's not a variable now, but it's a function and in our example, *inAgeRange* is the name of the new function that was returned from the *makeBetweenFunc*.
-And now, when we're calling our new *inAgeRange* function, we pass in a value, and then that value get's inside it's block of code which is the return statement of the anonymous function that the *makeBetweenFunc* returns. 
-And finally we compare for example the value 17 passed through the inAgeRange function, with the min and max values from the makeBetweenFunc and we return true or false finally after the comparison. 
+And now, when we're calling our new *inAgeRange* function, we pass in a value, and then that value get's inside it's block of code which is the return statement of the anonymous function that the *makeBetweenFunc* returns.
+And finally we compare for example the value 17 passed through the inAgeRange function, with the min and max values from the makeBetweenFunc and we return true or false finally after the comparison.
 And that's all!
 
-And now a super important javaScript topic and that is: 
+And now a super important javaScript topic and that is:
 
 ## CALLBACK FUNCTIONS
 
-> A callback function is a function passed into another function as an argument, which is then invoked inside the outer function. 
+> A callback function is a function passed into another function as an argument, which is then invoked inside the outer function.
 
-So, we've already done this, remember with the callTwice function and the laugh function. 
+So, we've already done this, remember with the callTwice function and the laugh function.
 
 ```javascript
 function callTwice(func)
@@ -1811,27 +1811,27 @@ function laugh()
   console.log("HAHAHAHAH");
 }
 
-callTwice(laugh) // pass the laugh function as an argument. 
+callTwice(laugh) // pass the laugh function as an argument.
 
 // will print the string "HAHAHAH" 2 times
 ```
 
 **So, in the above example, the laugh() function is a callback function.**
 
-Callbacks are extremely useful. 
-For example, let's say we want to make a request to load data from Facebook's API, then that request takes times to execute and we would have to pass a callback function which will be called when the request is finished and the data is back. 
+Callbacks are extremely useful.
+For example, let's say we want to make a request to load data from Facebook's API, then that request takes times to execute and we would have to pass a callback function which will be called when the request is finished and the data is back.
 
 Now, an extremely day to day use case of callbacks is with anonymous functions. (we'll see examples below.)
-There is nothing wrong with making a standalone function and give it a name and then use it as a callback, but we usually just want to pass as a callback a function that we're going to use only one time. And for that usecase, anonymous functions are the perfect fit. 
+There is nothing wrong with making a standalone function and give it a name and then use it as a callback, but we usually just want to pass as a callback a function that we're going to use only one time. And for that usecase, anonymous functions are the perfect fit.
 
 ```javascript
 /**
  * in javascript there is a built in method called setTimeout()
- * it expects to pass 2 arguments. 
- * 1 is a function, and the other one is a number, which is a miliseconds counter. 
+ * it expects to pass 2 arguments.
+ * 1 is a function, and the other one is a number, which is a miliseconds counter.
 */
 
-function grumpus() 
+function grumpus()
 {
   alert("GAHH GO AWAY!");
 }
@@ -1840,8 +1840,8 @@ setTimeout(grumpus, 5000);
 
 /**
  * So what we've done here is that we call the setTimeout() function and we pass in our grumpus function
- * which basically executes an alert. 
- * What this will do simply is, display the alert on our webpage 5 seconds after the page has loaded.  
+ * which basically executes an alert.
+ * What this will do simply is, display the alert on our webpage 5 seconds after the page has loaded.
 */
 
 /**
@@ -1857,47 +1857,47 @@ setTimeout(function() {
 // But we're simply saying: Just execute the block of code inside the anonymous function after 5seconds and simply do it one time, we will not use this function again anywhere else, if we wanted to do that we could make a reusable function by declaring it with a name or save it to a variable as we've seen.
 ```
 
-Now let's see a more advanced example. 
+Now let's see a more advanced example.
 We'll write some code that will run when we click a button on the page.
 **Head to the .html and .js files of this section (functions)**
 
-Now, last thing we're going to cover and you should not stress much about it, is, 
+Now, last thing we're going to cover and you should not stress much about it, is,
 
 ### Hoisting
 
 ```javascript
-var animal = "fox"; 
-console.log(animal) 
+var animal = "fox";
+console.log(animal)
 
 // this will print "fox" obviously
 
-// but what if we reverse the lines? 
+// but what if we reverse the lines?
 
 console.log(animal);
-var animal = "fox"; 
+var animal = "fox";
 
 // we will get ~> undefined.
 
 // if we remove completely the let animal = ...
 
-console.log(animal); 
+console.log(animal);
 
-// this will give us an error, that the variable animal is not defined anywhere. 
+// this will give us an error, that the variable animal is not defined anywhere.
 
-// So what is called hoisting is the second of this 3 examples. 
-// Even though we've defined the variable animal but we're trying to print it before the definition we're not getting an error, but we get undefined. Why? 
+// So what is called hoisting is the second of this 3 examples.
+// Even though we've defined the variable animal but we're trying to print it before the definition we're not getting an error, but we get undefined. Why?
 
-// Behind the scenes what javaScript is doing is basically this: 
+// Behind the scenes what javaScript is doing is basically this:
 
-var animal; 
-console.log(animal); 
-animal = "fox"; 
+var animal;
+console.log(animal);
+animal = "fox";
 
 // and thus we get undefined, and that is what's called hoisting.
 ```
 
-! Notice that everything we said in the above example is by using the **var** keyword. 
-Let's see what happens with const and let 
+! Notice that everything we said in the above example is by using the **var** keyword.
+Let's see what happens with const and let
 
 ```javascript
 console.log(shrimp);
@@ -1905,12 +1905,12 @@ let shrimp = 'Harlequin Shrimp';
 
 /**
  * We'll get a reference error in this case... : Cannot access shrimp before initialization.
- * So that means that with the let keyword there is no hoisting! 
- * And that's another reason we use let unstead of var besides the scope life of a variable that we've previously discussed. (same with const) 
+ * So that means that with the let keyword there is no hoisting!
+ * And that's another reason we use let unstead of var besides the scope life of a variable that we've previously discussed. (same with const)
 */
 ```
 
-And now let's discuss hoisting with functions... 
+And now let's discuss hoisting with functions...
 
 ```javascript
 
@@ -1926,8 +1926,8 @@ howl(); // call of the function after definition it woks as expected...
 
 So yes... functions are hoisted. So we can imagine behind the scenes that, whenever and wherever we define and implement a function, javaScript behind the scenes will put them all in order at the top of the file as with, when declaring a variable with the var keyword.
 
-Remember that also we can define and implement functions as expressions. 
-And those are NOT hoisted! 
+Remember that also we can define and implement functions as expressions.
+And those are NOT hoisted!
 
 ```javascript
 
@@ -1942,9 +1942,9 @@ hoot(); // works as expected
 
 > Next topic: ~> Apply Functions to Collections of Data
 
-So, this section is focused on useful array methods that expects you to pass in a callback! 
+So, this section is focused on useful array methods that expects you to pass in a callback!
 
-Arrays come with many built-in methods that accept callback functions. 
+Arrays come with many built-in methods that accept callback functions.
 They are super super useful.
 
 So, the first method that we'll talk about is called:
@@ -1952,7 +1952,7 @@ So, the first method that we'll talk about is called:
 ## forEach
 
 > accepts a callback function.
-> Calls the function once per element in the array. 
+> Calls the function once per element in the array.
 
 ```javascript
 const nums = [9, 8, 7, 6, 5, 4, 3, 2, 1];
@@ -1970,11 +1970,11 @@ nums.forEach(function(el) {
   }
 });
 
-// we can also get the index alongside the element with the forEach method. 
+// we can also get the index alongside the element with the forEach method.
 nums.forEach(function(num, idx) {
-  console.log(idx, num); 
+  console.log(idx, num);
   /**
-   * will print: 
+   * will print:
    * 0 9
    * 1 8
    * 2 7
@@ -1982,7 +1982,7 @@ nums.forEach(function(num, idx) {
   */
 });
 
-// a more complex example: 
+// a more complex example:
 
 const books = [{
    title: "Good Omens",
@@ -1999,14 +1999,14 @@ const books = [{
     authors: ["qwerty2", "Neil"],
     rating: 4.25
   },
-  { 
+  {
     title: "Good Omenzzzzz",
     authors: ["Terryzzzz", "Neilzzzzzzz"],
     rating: 4.25
-  } 
+  }
 ];
 
-// So we have an array where each element is an object. 
+// So we have an array where each element is an object.
 // Let's say we want to print each title
 
 books.forEach(function(book) { // so this book represents an element of the array which in our case is an object
@@ -2042,7 +2042,7 @@ const caps = texts.map(function(t) {
 console.log(texts); // ["rofl", "lol", "omg", "ttyl"]
 console.log(caps); // ["ROFL", "LOL", "OMG", "TTYL"]
 
-// so the .map() method generates a new array and thus the texts array is not modified. 
+// so the .map() method generates a new array and thus the texts array is not modified.
 ```
 
 Another example using map
@@ -2060,17 +2060,17 @@ const numDetail = numbers.map(function(n) {
 /**
  * So what the above does is: It creates a new array with name: numDetail which contains 7 objects as elements,
  * where each object corresponds to each element of the numbers array,
- * and it tells us which of the numbers are even and which are not, but returning true or false to the isEven property. 
- * the .map() function maps the original array, but it doesn't modify it and in our case we simply return an object immediately with a boolean expression to be returned in the isEven property.  
+ * and it tells us which of the numbers are even and which are not, but returning true or false to the isEven property.
+ * the .map() function maps the original array, but it doesn't modify it and in our case we simply return an object immediately with a boolean expression to be returned in the isEven property.
 */
 ```
 
-Yet another example... 
+Yet another example...
 
 ```javascript
 const words = ["asap", "byob", "rsvp", "diy", "wtf"];
 
-// what we want to do is format each string of the array to the form of: 
+// what we want to do is format each string of the array to the form of:
 // A.S.A.P for example for the 1st string, and do the same with the rest
 
 const dotSeparatedWords = words.map(function(w) {
@@ -2079,19 +2079,19 @@ const dotSeparatedWords = words.map(function(w) {
 
 /**
  * So how the above code exactly works...
- * We first make every letter capital. 
+ * We first make every letter capital.
  * Then we apply the split() method by passing with an empty string and that results in giving us an array,
  * whose elements is every single character of the word.
- * so for example ~> ['A', 'S', 'A', 'P'] 
- * and then the join() method joins into a single string each and every character of the array and it will join the characters by whatever we pass it as an argument. 
- * In our case we wanted a dot (.), but we could also give a ~> (-), or whatever else. 
+ * so for example ~> ['A', 'S', 'A', 'P']
+ * and then the join() method joins into a single string each and every character of the array and it will join the characters by whatever we pass it as an argument.
+ * In our case we wanted a dot (.), but we could also give a ~> (-), or whatever else.
 */
 ```
 
-Yet another useful example, using the map() method. 
+Yet another useful example, using the map() method.
 
-```javascript 
-// Let's say we have the following array. 
+```javascript
+// Let's say we have the following array.
 
 const books = [{
    title: "Good Omens",
@@ -2108,14 +2108,14 @@ const books = [{
     authors: ["qwerty2", "Neil"],
     rating: 4.25
   },
-  { 
+  {
     title: "Good Omenzzzzz",
     authors: ["Terryzzzz", "Neilzzzzzzz"],
     rating: 4.25
-  } 
+  }
 ];
 
-// what we want to do is create an array that contains all our book titles from our library 
+// what we want to do is create an array that contains all our book titles from our library
 
 const bookTitles = books.map(function(b) {
   return b.title;
@@ -2125,27 +2125,27 @@ const bookTitles = books.map(function(b) {
 
 /**
  * We have created a new array called bookTitles and the map method will go through every element of the books array
- * where in our case the elements of that array are objects, 
- * and we can simply call b.title, to return each title of each element and store it in our new array. 
- * And now if we do: 
+ * where in our case the elements of that array are objects,
+ * and we can simply call b.title, to return each title of each element and store it in our new array.
+ * And now if we do:
 */
 
-console.log(bookTitles); 
+console.log(bookTitles);
 
 // we should see that array containing as elements all the titles of the books array.
 // So simple and so useful.
 ```
 
-## Arrow Functions => 
+## Arrow Functions =>
 
-> syntactically compact alternative to a regular function expression 
+> syntactically compact alternative to a regular function expression
 
 ```javascript
 const square = function(x) {
-  return x * x; 
+  return x * x;
 }
 
-// --------------------- 
+// ---------------------
 
 const square = (x) => {
   return x * x;
@@ -2153,26 +2153,26 @@ const square = (x) => {
 
 const sum = (x, y) => {
   return x + y;
-} 
+}
 ```
 
 2 Rules:
 
 ```javascript
-// parenthesis are optional if there's only one parameter: 
+// parenthesis are optional if there's only one parameter:
 
 const square = x => {
   return x * x;
 }
 
-// use empty parenthesis for functions with no parameters: 
+// use empty parenthesis for functions with no parameters:
 
 const singASong = () => {
   return "LALALALAL";
 }
 ```
 
-**Implicit Return** in arrow functions: 
+**Implicit Return** in arrow functions:
 
 The bellow functions do the exact same thing
 
@@ -2195,39 +2195,39 @@ const isEven = num => {
 // implicit return
 const isEven = num => (
   num % 2 === 0)
-); 
+);
 
-// one-liner implicit return 
+// one-liner implicit return
 const isEven = num => num % 2 === 0;
 ```
 
-So, in scenarios where you have one expression that you want to be returned, you can re-write the arrow function by removing the curly braces and the return keyword and simple add parenthesis (see implicit return in the above example.) 
+So, in scenarios where you have one expression that you want to be returned, you can re-write the arrow function by removing the curly braces and the return keyword and simple add parenthesis (see implicit return in the above example.)
 
 The one-liner implicit return should be used only when we have short expressions that we want to return as our example above. For longer ones just use parenthesis. It's better to read.
 
-Now, an example of when we can't use an explicit return: 
+Now, an example of when we can't use an explicit return:
 
 ```javascript
 const square = n => (
   if (n < 0)
   {
-    return false; 
+    return false;
   }
 
   n * n;
 );
 ```
 
-The above code snippet is wrong! 
-Javascript does not know what to return in this case, and thus that arrow function syntax is wrong. 
+The above code snippet is wrong!
+Javascript does not know what to return in this case, and thus that arrow function syntax is wrong.
 We can use the explicit return ONLY when we have just a single expression that we want to return and nothing else.
 
-Now, let's see some more nice examples. 
+Now, let's see some more nice examples.
 
 ```javascript
 /**
  * Let's say we have an array of numbers and we want to double these numbers and store them into a new array
- * of course we can use map! 
+ * of course we can use map!
  * let's see 3 different ways of achieving the same thing!
 */
 
@@ -2244,9 +2244,9 @@ const doubles2 = nums.map(n => {
 const doubles3 = nums.map(n => n * 2);
 ```
 
-## Find 
+## Find
 
-> returns the value of the **first element** in the array that satisfies the provided testing function. 
+> returns the value of the **first element** in the array that satisfies the provided testing function.
 
 ```javascript
 let movies = [
@@ -2258,7 +2258,7 @@ let movies = [
 
 let movie = movies.find(movie => {
   return movie.includes("Mrs.");
-}); // Will return: Mr. and Mrs. Smith 
+}); // Will return: Mr. and Mrs. Smith
 
 /**
  * Notice that we also have Mrs. Doubtfire, BUT remember that it ONLY returns the FIRST element that satisfies our "condition"
@@ -2267,7 +2267,7 @@ let movie = movies.find(movie => {
 let movie2 = movies.find(m => m.indexOf("Mrs") === 0); // This will return: Mrs. Doubtfire .
 ```
 
-## Filter 
+## Filter
 
 > Creates a new array with all elements that pass the test implemented by the provided function.
 
@@ -2283,10 +2283,10 @@ console.log(odds); // [9, 7, 5, 3, 1]
 const smallNums = nums.filter(n => n < 5); // [4, 3, 2, 1]
 ```
 
-## Every & Some 
+## Every & Some
 
 > **Every**, tests whether all elements in the array pass the provided function. It returns a boolean value.
-> **Some**, similar to every, but returns true if ANY of the array elements pass the test function. 
+> **Some**, similar to every, but returns true if ANY of the array elements pass the test function.
 
 ```javascript
 const words = ["dog", "dig", "log", "bag", "wag"];
@@ -2295,7 +2295,7 @@ words.every(word => {
   return word.length === 3;
 }); // true
 
-words.every(word => word[0] === 'd'); //false 
+words.every(word => word[0] === 'd'); //false
 
 words.every(w => {
   let last_letter = w[w.length - 1];
@@ -2306,26 +2306,26 @@ words.every(w => {
 ```javascript
 const words = ["dog", "jello", "log", "cupcake", "bag", "wag"];
 
-// Are there any words longer than 4 characters? 
+// Are there any words longer than 4 characters?
 words.some(word => {
   return word.length > 4;
 }); // true
 
-// Do any words start with 'Z'? 
+// Do any words start with 'Z'?
 words.some(word => word[0] === 'Z'); // false
 
 // Do any words contain "cake"?
 words.some(word => word.includes("cake"));
 ```
 
-## Sort! 
+## Sort!
 
 > arr.sort(compareFunc(a,b));
 
  - If compareFunc(a,b) returns less than 0
   - Sort a before b
 
- - If compareFunc(a,b) returns 0 
+ - If compareFunc(a,b) returns 0
   - Leave a and b unchanged with respect to each other
 
  - If compareFunc(a,b) returns greater than 0
@@ -2337,7 +2337,7 @@ const prices = [400.50, 3000, 99.99, 35.99, 12.00, 9500];
 const ascSort = prices.sort((a,b) => a - b); // this way we're sorting in ascending order. From smallest to largest.
 // [12, 35.99, 99.99, 400.5, 3000, 9500]
 
-const descSort = prices.sort((a,b) => b - a); // this way we're sorting in descendin order. From largest to smallest. 
+const descSort = prices.sort((a,b) => b - a); // this way we're sorting in descendin order. From largest to smallest.
 // [9500, 3000, 400.5, 99.99, 35.99, 12]
 ```
 
@@ -2345,11 +2345,11 @@ And last but not least...
 
 ## Reduce!
 
-> Reduce executes a reducer function on each element of the array, resulting in a single value. 
+> Reduce executes a reducer function on each element of the array, resulting in a single value.
 
-Applications for reduce include stuff like, summing elements from an array. 
+Applications for reduce include stuff like, summing elements from an array.
 Or, finding the maximum value in an array.
-Or, Reducing an array of 100 numbers down to 1 Maximum. 
+Or, Reducing an array of 100 numbers down to 1 Maximum.
 
 ```javascript
 // accumulator is the variable that will store the end result of reduce.
@@ -2387,25 +2387,25 @@ console.log(topScore); // 99
 const topScore2 = grades.reduce((max, currVal) => Math.max(max, currVal));
 ```
 
-Reduce with initial value. 
+Reduce with initial value.
 
 ```javascript
-// We can also pass as a second parameter to the reduce method an initial value. 
+// We can also pass as a second parameter to the reduce method an initial value.
 
 const nums = [1, 2, 3, 4, 5, 6];
 
 const sum = nums.reduce((accumulator, currValue) => {
   return accumulator + currValue;
-}, 100); // <~ notice the 100 here after the callback 
+}, 100); // <~ notice the 100 here after the callback
 
 /**
- * So, what the second parameter does is, it simply initializes the accumulator variable. 
- * So this time the accumulator variable will not start with the 1st array elements as it's value but with the value of the parameter passed. i.e. 100 
+ * So, what the second parameter does is, it simply initializes the accumulator variable.
+ * So this time the accumulator variable will not start with the 1st array elements as it's value but with the value of the parameter passed. i.e. 100
  * So our final result that will get returned from the callback would be: 100 + 1 + 2 + 3 + 4 + 5 + 6 = 121.
 */
 ```
 
-Now let's talk about **tallying** in reduce. 
+Now let's talk about **tallying** in reduce.
 
 ```javascript
 const votes = ['y', 'n', 'n', 'y', 'n', 'y', 'y', 'y', 'n', 'n', 'y'];
@@ -2418,37 +2418,37 @@ const tally = votes.reduce((tally, vote) => {
 console.log(tally); // {y: 6, n: 5}
 ```
 
-So... let's get to the explanation... 
-We first set the tally parameter of the callback to be an empty object. 
-Then we want to count how many yes and no's we have inside our votes array. 
-So we can get to our final object: {y: 6, n: 5} 
-But how do we get there? 
-AFter the initialization of the tally parameter to be an empty object the logic is: 
-Check the tally of vote ~> (first element of the array) ~> 'y'. 
-Is there a 'y' inside the empty object {}? 
-No it's not, so add 1 to it. 
-And now we have: {y: 1} 
-Then check the next element. 
-The next element is 'n'. 
-Is there an 'n' inside: {y: 1}? 
-No there is not, so add 1 to it. 
-So now we have: {y: 1, n: 1}. 
-And we keep progressing like that until our end result. 
-Now let's get to the syntax. 
-First of all what is ```tally[vote]```? 
-Remember that tally is an object and we usually access object properties with the dot (.) operator. So why we're using brackets here? 
-Remember that we can also have an object property written as a string, in our case 'y', 'n' BUT we can't use the dot **.** operator to access object properties that are strings. In that case we use brackets ~> **[]**. So that one thing is out of the way. 
-Another thing is, what about the bellow snippet of code? How does it describe our logic above? 
+So... let's get to the explanation...
+We first set the tally parameter of the callback to be an empty object.
+Then we want to count how many yes and no's we have inside our votes array.
+So we can get to our final object: {y: 6, n: 5}
+But how do we get there?
+AFter the initialization of the tally parameter to be an empty object the logic is:
+Check the tally of vote ~> (first element of the array) ~> 'y'.
+Is there a 'y' inside the empty object {}?
+No it's not, so add 1 to it.
+And now we have: {y: 1}
+Then check the next element.
+The next element is 'n'.
+Is there an 'n' inside: {y: 1}?
+No there is not, so add 1 to it.
+So now we have: {y: 1, n: 1}.
+And we keep progressing like that until our end result.
+Now let's get to the syntax.
+First of all what is ```tally[vote]```?
+Remember that tally is an object and we usually access object properties with the dot (.) operator. So why we're using brackets here?
+Remember that we can also have an object property written as a string, in our case 'y', 'n' BUT we can't use the dot **.** operator to access object properties that are strings. In that case we use brackets ~> **[]**. So that one thing is out of the way.
+Another thing is, what about the bellow snippet of code? How does it describe our logic above?
 
 ```javascript
 tally[vote] = (tally[vote] || 0) + 1;
 ```
 
-Well the logic we described above could be more easily understanded if we write it as follows: 
+Well the logic we described above could be more easily understanded if we write it as follows:
 
 ```javascript
 votes.reduce((tally, vote) => {
-  if (tally[vote]) // if there is a 'y' or 'n' 
+  if (tally[vote]) // if there is a 'y' or 'n'
   {
     tally[vote]++; // increment it by 1
   }
@@ -2464,16 +2464,16 @@ votes.reduce((tally, vote) => {
 So how does the above code snippet do the same as the one liner: ```tally[vote] = (tally[vote] || 0) + 1;```?
 
 Well, it all boils down to understand how this works ~> ```(tally[vote] || 0) + 1```
-What we're saying is: in the beggining where we have our empty object, is there a vote of 'y' or 'n'? 
-No, there is not so ```tally[vote]``` becomes 0. 
-And now we have: ```(0 || 0) + 1``` 
-0 || 0 gives us 0 and + 1 gives us 1 
-And thus we now have: {y: 1} for the first element. 
-The same operation will be handled for the 'n' vote. 
+What we're saying is: in the beggining where we have our empty object, is there a vote of 'y' or 'n'?
+No, there is not so ```tally[vote]``` becomes 0.
+And now we have: ```(0 || 0) + 1```
+0 || 0 gives us 0 and + 1 gives us 1
+And thus we now have: {y: 1} for the first element.
+The same operation will be handled for the 'n' vote.
 So now we have: {y: 1, n: 1}
 The next step is:
-```tally[vote]``` now becomes 1 when we encounter another 'y' or 'n' and so we have: 
-1 || 0 which gives us (1) + 1 = 2 
+```tally[vote]``` now becomes 1 when we encounter another 'y' or 'n' and so we have:
+1 || 0 which gives us (1) + 1 = 2
 And so now we have: {y: 2, n:1}
 And thus we will continue like that until our end result...
 
@@ -2481,19 +2481,19 @@ And thus we will continue like that until our end result...
 
 And now heading to some new JS features!!!
 
-## 1. Default Parameters 
+## 1. Default Parameters
 
-So the old way of doing it is: 
+So the old way of doing it is:
 
 ```javascript
-function multiply(x, y) 
+function multiply(x, y)
 {
   y = typeof y === "undefined" ? 1 : y
   return x * y;
 }
 ```
 
-The new way of doing it: 
+The new way of doing it:
 
 ```javascript
 function multiply(a, b = 1)
@@ -2505,22 +2505,50 @@ multiply(4); // 4
 multiply(4, 5); // 20
 ```
 
-## 2. Spread 
+## 2. Spread
 
 > Spread syntax allows an iterable such as an array to be **expanded** in places where zero or more arguments
-> (for function calls) or elements (for array literals) are expected, 
+> (for function calls) or elements (for array literals) are expected,
 > or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
 
-So let's see spread for function calls. 
+So let's see spread for function calls.
 
 ```javascript
 const nums = [9, 3, 2, 8];
 
-Math.max(nums); // NaN 
+Math.max(nums); // NaN
 
-// Use spread! 
+// Use spread!
 Math.max(...nums); // 9
 
-// Same as calling: 
+// Same as calling:
 // Math.max(9,3,2,8);
+```
+
+Now, let's see spread in **Array Literals**.
+
+```javascript
+const nums1 = [1,2,3];
+const nums2 = [4,5,6];
+
+[...nums1, ...nums2]; // [1, 2, 3, 4, 5, 6]
+
+['a', 'b', ...nums2]; // ['a', 'b', 4, 5, 6]
+
+[...nums1, ...nums2, 7, 8, 9]; // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+Spread is usually great in cases you want to combine arrays...
+And one of the most actually used cases of **spread** is to just make a copy of an array.
+
+```javascript
+// Another example of using spread in strings
+
+// Remember that if we have a string and we want to split it into seperate characters we can do the following:
+
+"qwerty".split(''); // ~> ['q', 'w', 'e', 'r', 't', 'y']
+
+// but we can also use spread to achieve the same thing
+
+[..."qwerty"];  // ~> ['q', 'w', 'e', 'r', 't', 'y']
 ```
