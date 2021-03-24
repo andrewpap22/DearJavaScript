@@ -2477,3 +2477,50 @@ The next step is:
 And so now we have: {y: 2, n:1}
 And thus we will continue like that until our end result...
 
+<hr>
+
+And now heading to some new JS features!!!
+
+## 1. Default Parameters 
+
+So the old way of doing it is: 
+
+```javascript
+function multiply(x, y) 
+{
+  y = typeof y === "undefined" ? 1 : y
+  return x * y;
+}
+```
+
+The new way of doing it: 
+
+```javascript
+function multiply(a, b = 1)
+{
+  return a * b;
+}
+
+multiply(4); // 4
+multiply(4, 5); // 20
+```
+
+## 2. Spread 
+
+> Spread syntax allows an iterable such as an array to be **expanded** in places where zero or more arguments
+> (for function calls) or elements (for array literals) are expected, 
+> or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
+
+So let's see spread for function calls. 
+
+```javascript
+const nums = [9, 3, 2, 8];
+
+Math.max(nums); // NaN 
+
+// Use spread! 
+Math.max(...nums); // 9
+
+// Same as calling: 
+// Math.max(9,3,2,8);
+```
