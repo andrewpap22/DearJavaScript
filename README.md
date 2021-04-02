@@ -2360,7 +2360,7 @@ Or, Reducing an array of 100 numbers down to 1 Maximum.
 ```
 
 | Callback    | accumulator | currentValue | return value |
-| ----------- | :---------: | :----------: | :----------: |
+| :---------: | :---------: | :----------: | :----------: |
 | first call  | 3           | 5            | 8            |
 | ----------- |             |              |              |
 | second call | 8           | 7            | 15           |
@@ -2584,4 +2584,196 @@ function sumAll(...nums) // nums is the name of the array that contains all the 
 
 sumAll(1, 2); // 3
 sumAll(1, 2, 3, 4, 5); // 15
+
+// Another way of doing it using reduce!
+
+function sum(...numbers) 
+{
+  return numbers.reduce((total, currVal) => {
+    return total + currVal;
+  })
+}
+
+sum(4,5,6,7); // 22
+```
+
+What we did above is to use rest, to collect ALL the parameters but as mentioned in the definition of rest, we can use it to collect the REST of the parameters of a function. 
+
+Example: 
+
+```javascript
+function fullName(first, last, ...titles)
+{
+  console.log("first", first);
+  console.log("last", last);
+  console.log("titles", titles);
+}
+
+fullName("Tom", "Jones", "qwerty", "qwerty1", "qwerty2"); 
+
+// first Tom
+// last Jones
+// titles ["qwerty", "qwerty1", "qwerty2"]
+```
+
+We can also use rest in arrow functions! 
+
+```javascript
+const multiply = (...nums) => (
+  nums.reduce((total, currVal) => total * currVal; // and also we're doing another implicit return (one line) here
+  );
+) // notice we're doing an implicit return here, so no return keyword needed! 
+
+multiply(1,2,3); // 6
+```
+
+## Destructuring!
+
+> A short, clean syntax to 'unpack': 
+> - Values from arrays
+> - Properties from objects
+> Into distinct variables. 
+
+### Array destructuring 
+
+```javascript
+const raceResults = [ "Eliud Kipchoge", "Feyisa Lelisa", "Galen Rupp" ];
+
+const [ gold, silver, bronze ] = raceResults; // this is the new shorter syntax (keep in mind the position matters) 
+
+// which is equivalent to the following: 
+
+const gold = raceResults[0];
+const silver = raceResults[1];
+const bronze = raceResults[2];
+
+// ------------------------------
+
+console.log(gold); // Eliud Kipchoge
+console.log(silver); // Feyisa Lelisa
+console.log(bronze); // Galen Rupp
+
+/**
+ * Another nice trick we could do: 
+ * Let's say we want to save to a variable the 1st element, and then skip the 2nd and the 3rd and pick directly the 4th
+ * To do that, we can add extra commas 
+*/
+
+const raceResults2 = ["qwerty", "qwerty1", "qwerty2", "qwerty3", "qwerty4"];
+
+const [first, , , fourth] = raceResults2; 
+
+console.log(first, fourth); // "qwerty" "qwerty3"
+
+const [ fastest, ...everyoneElse ] = raceResults; // using the rest operator here to collect the rest (remaining) of the array elements. 
+
+console.log(fasest); // Eliud Kipchoge
+console.log(); // ["Feyisa Lelisa", "Galen Rupp"]
+```
+
+### Object Destructuring!
+
+```javascript
+const runner = {
+  first: "Eliud", 
+  last: "Kipchoge",
+  country: "Kenya",
+  title: "Elder of the order of the golden heart of kenya"
+};
+
+const { first, last, country } = runner;
+
+// in an array we unpack (destructure) based on the index of the array (so the order matters)
+// but in objects we destructure based on the name of the property
+// so the variable names we're going to create must be existing properties in the object
+
+// keep in mind that first, last, country are variables which are different from the first, last, country inside the object, which are properties of the runner object!
+
+console.log(first); // "Eliud"
+console.log(last); // "Kipchoge"
+console.log(country); // "Kenya"
+
+// We can also give new names to our variables also,
+
+const { country: nation } = runner; // so this will create a new varible called nation based on the country property, that it found in the object, and it will store the property's value in it. 
+
+// So: 
+
+console.log(nation); // "Kenya"
+```
+
+### Nested Destructuring
+
+```javascript
+const results = [
+  {
+    first: "Eliud",
+    last: "Kipchoge",
+    country: "Kenya"
+  },
+  {
+    first: "Feyisa",
+    last: "Lilesa",
+    country: "Ethiopia"
+  },
+  {
+    first: "Galen",
+    last: "Rupp",
+    country: "United States"
+  }
+];
+
+// Let's say we want to extract the country of the second element of the array (the second object), i.e. Ethiopia
+
+const [, { country }] = results; 
+
+/**
+ * Explanation: 
+ * Notice we do skip the 1st element of the array with a comma, and then we make the country variable,
+ * from the 2nd object's country property
+ * and thus we get Ethiopia.
+*/
+
+console.log(country); // "Ethiopia"
+```
+
+### Parameters Destructuring
+
+```javascript
+const fullName = ( { first, last } ) => {
+  return `${first} ${last}`;
+}
+
+const runner = {
+  first: "Eliud",
+  last: "Kipchoge",
+  country: "Kenya"
+};
+
+console.log( fullName( runner ) ); // "Eliud Kipchoge"
+```
+
+```javascript
+// Let's use a more practical example
+
+/**
+ * So, let's say we have a response from a website, 
+ * And the response contains it's info into an array
+ * And then for example I want to use a function to extract the status code from that array
+ * Let's see what we can do. 
+*/
+
+const response = [
+  "HTTP/1.1",
+  "200 OK",
+  "application/json"
+];
+
+function parseResponse( [, statusCode] )
+{
+  return statusCode;
+}
+
+let statusCode = parseResponse( response ); 
+console.log(statusCode); // "200 OK"
 ```
