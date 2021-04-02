@@ -2777,3 +2777,31 @@ function parseResponse( [, statusCode] )
 let statusCode = parseResponse( response ); 
 console.log(statusCode); // "200 OK"
 ```
+
+Let's now continue onto a new chapter!
+
+## Object Methods and the 'this' keyword
+
+**Goals**:
+ - Add methods to objects
+ - use new object shorthand syntax
+ - Use computed properties
+ - Understand prototypes
+ - Explain how the !@#$ *this* works.
+
+So let's start with: 
+
+### ShortHand Properties 
+
+```javascript
+const reviews = [4.5, 5.0, 3.44, 2.8, 3.5, 4.0, 3.5];
+
+const max = Math.max(...reviews);
+const min = Math.min(...reviews); 
+const sum = reviews.reduce( (sum, currValue) => sum + currValue );
+const avg = sum / reviews.length;
+
+const stats = { min, max, sum, avg }; // new shorthand properties object syntax!
+
+console.log(stats); // { min: 2.8, max: 5, sum: 26.74, avg: 3.82 }
+```
