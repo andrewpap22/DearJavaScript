@@ -2359,15 +2359,15 @@ Or, Reducing an array of 100 numbers down to 1 Maximum.
 });
 ```
 
-Callback   | accumulator | currentValue | return value
------------|             |              |
-first call | 3           | 5            | 8
------------|             |              |
-second call| 8           | 7            | 15
------------|             |              |
-third call | 15          | 9            | 24
------------|             |              |
-fourth call| 24          | 11           | 35
+| Callback    | accumulator | currentValue | return value |
+| ----------- | :---------: | :----------: | :----------: |
+| first call  | 3           | 5            | 8            |
+| ----------- |             |              |              |
+| second call | 8           | 7            | 15           |
+| ----------- |             |              |              |
+| third call  | 15          | 9            | 24           |
+| ----------- |             |              |              |
+| fourth call | 24          | 11           | 35           |
 
 **Now, Let's see how to find the maximum value in an array.**
 
@@ -2551,4 +2551,37 @@ And one of the most actually used cases of **spread** is to just make a copy of 
 // but we can also use spread to achieve the same thing
 
 [..."qwerty"];  // ~> ['q', 'w', 'e', 'r', 't', 'y']
+```
+
+Now, let's see spread in **Object Literals**.
+
+```javascript
+const feline = { legs: 4, family: "Felidae" };
+const canine = { family: "Caninae", furry: true };
+
+const dog = { ...canine, isPet: true };
+// {family: "Caninae", furry: true, isPet: true}
+
+const catDog = { ...feline, ...canine };
+// {legs: 4, family: "Caninae", furry: true}
+```
+
+## Rest Parameters! 
+
+> Rest params, collects all remaining arguments into an actual array. 
+
+**!** Be careful though, the syntax is the same as with spread (...) it's 3 dots, BUT! we use it only, inside parenthesis of functions. i.e. where parameters are being put in functions. 
+
+Example: 
+
+```javascript
+function sumAll(...nums) // nums is the name of the array that contains all the arguments being passed
+{
+  let total = 0;
+  for (let n of nums) total += n; // so we can loop over that array...
+  return total; 
+}
+
+sumAll(1, 2); // 3
+sumAll(1, 2, 3, 4, 5); // 15
 ```
