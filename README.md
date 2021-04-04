@@ -2805,3 +2805,239 @@ const stats = { min, max, sum, avg }; // new shorthand properties object syntax!
 
 console.log(stats); // { min: 2.8, max: 5, sum: 26.74, avg: 3.82 }
 ```
+### Computed properties. 
+
+another nice shorthand new syntax for objects. 
+
+So computed properties are just an improvement for the object literal syntax where we can add a property with a dynamic key. 
+
+```javascript
+const user = "Jools";
+
+const userRoles = {
+  [user]: "Admin"
+};
+
+console.log(userRoles); // {Jools: "Admin"}
+
+// So, we can use a variable as a key name in an object literal property!.
+```
+
+## Methods!!!
+
+> So, we can add functions as properties on objects!!!
+> And we call them methods!
+
+```javascript
+const math = {
+  multiply : function (x,y ) {
+    return x * y;
+  },
+  dividey : function (x,y ) {
+    return x / y;
+  },
+  square : function (x,y ) {
+    return x * x;
+  }
+};
+
+// there also a shorter syntax we can use to add methods into objects: 
+
+const auth = {
+  username: "qwerty",
+  login() {
+    console.log("LOGGED IN");
+  },
+  logout() {
+    console.log("Bye");
+  }
+};
+
+// and to call a method we use the dot notation: 
+
+auth.login(); // "LOGGED IN"
+```
+
+# THIS <~~ 
+
+> The keyword **this** can be a major point of confusion and misery and hardship and general suffering in the life of a new JS developer.
+
+So, **this** is a keyword. You can think of it as a **reference to the current execution scope**!
+
+So, **this** will return an object back to us which refers to the current execution scope.
+
+Example: 
+
+```javascript
+function sayHi()
+{
+  console.log("Hi");
+  console.log(this);
+}
+
+sayHi(); // Hi, Window {}
+```
+
+So as we can see in the above example, our function prints the string "Hi" and then the **this** keyword returns to use an object with the name Window. What Window is? It's the global scope in the browser!!!
+
+So the above sayHi function, seems like it floats in the middle of nowhere but that's not the exact case. Actually its a method of the Window object which is the global scope of our browser! So if we go and open up the console to our browser and type in: *Window*, we'll get that particular object which has lots of built in methods already, but if we scroll we'll find as well our sayHi() function that we defined in our app.js file.
+
+> An IMPORTANT thing to remember here. 
+> When we declare a variable with the keyword **var** that particular variable is being added automatically to the Window object, i.e. the global scope. 
+> BUT, that is not the case for the **let** and **const** keywords! 
+
+Just keep this in the back of your head for now...
+
+Now, let's see where **this** is actually useful! 
+
+```javascript
+// so let's say we have an object: 
+
+const person = {
+  first: "Cherily",
+  last: "Sarkisian",
+  nickName: "Cher",
+
+  fullName() { // Remember that this is a function with a name: fullName, contained inside the person object!!!
+    console.log(this);
+  }
+};
+
+// so let's execute the fullName method: 
+
+person.fullName(); // what will be printed? What's the value of this, this time? 
+
+// {first: "Cherify", last: "Sarkisian", nickName: "Cher", fullName: f}
+
+/**
+ * So, we got back the person object this time from the this keyword and we didn't get the window global scope object.
+ * Why is that usefull? 
+ * Because it allows us to reference the other properties inside of that particular object!!!
+ * For example, let's say we want to use the fullName method to prin the fullName of that person. 
+ * So we should modify our method like below: 
+*/
+
+const person = {
+  first: "Cherily",
+  last: "Sarkisian",
+  nickName: "Cher",
+
+  fullName() { 
+    const { first, last, nickName } = this;  // remember that that's object destructuring 
+    console.log(`${first} ${last } AKA ${nickName}`); // so here first actualy is: this.first and so on..
+  }
+};
+
+person.fullName(); // Cherilyn Sarkisian AKA Cher
+```
+
+So write now we have the ability to write a method, that is aware of the object it lives in, which means, we can use objects not just to store different methods because they are related (just like we did above with the math example, where we added, add, multiply methods in) but now we have a way of also interacting with properties with other values or even other methods. So our object, can now be a *self contained world* where we can have variables or properties to be used inside of the methods of the object! 
+
+**IMPORTANT!!!**, The value of **this** depends on the invocation xontext of the function it is used in. What that means is, that the value of **this** will change, depending on how the function is being executed.
+
+So on our above example, when we call: **person.fullName();** that is actually what is setting the value of **this** to be the person object. That particular way we call the fullName method.
+
+So, how we could actually change the value of **this**?
+
+```javascript
+// Based on our previous person object.
+
+const printFullName = person.fullName; // so basically creating a reference to the person.fullName method, basically a variable 'poiting' to it.
+
+// And now if we call printFullName(); we get: 
+
+/**
+ * undefined undefined AKA undefined
+*/
+```
+
+So right now, the way we executed our fullName method of the person object, we basically created a pointer variable, to point to that particular method. BUT, doing so, the **this** keyword now changes value to the Window object and at the window object we have not defined first, last, nickname variables and thus we get undefined! 
+
+So we can think of it like the following: 
+
+When we have: `person.fullName();` we can think of fullName being set to the thing that's to the left of it. If there's nothing on the left, like with the `printFullName()` case then that will be set to the global execution scope i.e. the Window object and thus the value of **this** changes accordingly!
+
+Now, one more important thing! One of the key differences about regular functions and arrow functions is that, **arrow functions do not get their own version of `this`.** It doesn't matter how you call an arrow function the value of **this** is not going to change!!!
+
+```javascript
+const aRandomObject = {
+  qwerty: "qwertz",
+  laughs: () => {
+    console.log(this);
+    console.log(`${this.qwerty} xa0xa0xa0`);
+  }
+};
+
+aRandomObject.laughs(); 
+
+/**
+ * We'll get: 
+ * Window {}
+ * undefined xa0xaxa0
+*/
+```
+
+So, remember that arrow functions always will NOT get their own value of **this** and that's exactly why we don't use arrow functions as methods inside of objects. Because usually inside objects we want our methods to be able to access the other properties or methods of the object and with arrow functions we can't do that!!!
+
+Now, why arrow functions do not get their own **this** and how can it be usefull *sometimes*.
+
+```javascript
+const annoyer = {
+  phrases: [
+    "yolo",
+    "0xa0xa0",
+    "qwerty",
+    "qwertz",
+    "blablabla"
+  ],
+  pickPhrase() { // so pickPhrase method will return a random phrase from the phrases array above.
+    const { phrases } = this; // basically we use destructuring here so we won't have to do this.phrases later on and simply write phrases, which is of course equal to this.phrases...
+    const index = Math.floor(Math.random() * phrases.length);
+
+    return phrases[index];
+  },
+  start() {
+    console.log(this.pickPhrase()); // here we'll get a random phrase of the phrases array. The value of the this keyword here is set to the annoyer object.
+    setInterval(function () {
+      console.log("qwerqwerqwetewqrewq");
+      console.log(this); // the value of this keyword here is set to the Window object though...
+      console.log(this.pickPhrase()); // So here we'll get an error that pickPhrase is not a function (because it's not included in the Window object.)
+    }, 3000) // so what the start function will do is, print the above string every 3 seconds (3k milisseconds).
+  }
+};
+```
+
+So, why inside the **start()** method the **this** keyword is set to the annoyer object in the first line we use it but when we get inside the setIterval function which uses an anonymous function as a parameter the **this** keyword inside that anonymous functon is set to the Window object instead?? 
+Remember that **this** changes depending on how it's called!
+So, in the beggining we execute the start() method by doing: **annoyer.start()** and thus the **this** keyword get's the annoyer object as it's value. But then, the anonymous function is called by setInterval and not by us and since the setInterval is a method of the Window object, then the **this** keyword inside the anonymous function of setInterval is set to the Window object and thus we get the error right there that pickPhrase is not a method, because it's not defined inside the Window object.
+
+So, how can we solve the above problem? How can we use the **this** keyword inside the anonymous function of setInterval to have a value of our annoyer object and thus use our pickPhrase method? 
+Well, we can solve that with arrow functions! 
+Remember that arrow functions don't get their own version of **this**. So by using an anonymous function as a parameter of setInterval then that particular anonymous function will get it's own value of **this** keyword. BUT, if we use an anonymous function over there, that particular anonymous function will not have it's own value of **this** and thus the **this** keyword will remain unchanged inside the anonymous function and will still have as it's value the annoyer object and thus we can use the this.pickPhrase() method normally and we would have achieved what we wanted to do in the beginning, i.e. to print a random phrase from our phrases array of our method every 3 seconds. 
+So setInterval() should look like the below to solve our problem: 
+
+```javascript
+setInterval( () => {
+  console.log(this.pickPhrase());
+}, 3000 );
+```
+
+Now, an extra bonus here. When we have a setInterval we usually don't want it to repeat forever until we refresh the page, so we want another method so we're able to call it and stop the interval. 
+To do this we can make a new method on our annoyer object and call it stop() and stop() will use a bult in method of javaScript called clearInterval to doe exactly what we want. 
+
+```javascript
+// Consider the below method added to our annoyer object above 
+
+stop() {
+  clearInterval(this.timerId); // where did this timerId come from? 
+}
+
+// well, setInterval returns an Id which is an integer and it's the number of times that it has been called. 
+// So we can modify our start() method to save that id into a variable and then use it as we're doing above! 
+
+start() {
+  const timerId = setInterval(blabla); // <- that way though we won't have access to the timerId variable inside the stop method because it's out of it's scope. 
+  this.timerId = setInterval(blabla); // So, by using the this keyword here we're basically adding the timerId as a property to the annoyer object when the method start() is being executed and the timerId value is updated every time setInterval it's called (every 3 seconds)
+  // And now we can refer to it inside the stop() method by saying: this.timerId and basically it will stop the interval with that particular id.
+}
+```
