@@ -3049,5 +3049,44 @@ So head to the app.js file of this particular section for that!
 
 And now, we're going to move on to...
 
-# DOM Manipulation!
+# DOM Manipulation!!!
 
+> **DOM** = **D**ocument **O**bject **M**odel!
+
+**What is it?**
+
+ - The DOM is a JavaScript representation of a webpage. 
+ - It's your JS "window" into the contents of a webpage
+ - It's just a bunch of objects that you can interact with via JS.
+
+So in the browser everything get's translated to objects. Simply javascript objects as we know them. 
+You give it CSS, HTML and it creates JavaScript objects to translate them. 
+
+And that's what DOM is, it's the tree of objects that the browser creates for a particular webpage. 
+
+Example: 
+
+```html
+<body>
+  <h1>Hello!</h1>
+  <ul>
+    <li>qwerty</li>
+    <li>qwertz</li>
+  </ul>
+</body>
+```
+
+So given the following html file for a webpage, the browser will translate it to the following DOM tree: 
+
+Document <~~ This is a javascript object
+    \
+     Body <~~ And this as well
+      /\ 
+     h1 ul <~~ And this...
+        /\
+       li li
+
+All of the above objects have a bunch of properties built in to them. 
+The simplest one is for example what's the text inside of the <li> element (or object) and that property is called innerText. 
+
+epomeno video: "another fun dom example.mp4"
