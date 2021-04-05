@@ -3041,3 +3041,13 @@ start() {
   // And now we can refer to it inside the stop() method by saying: this.timerId and basically it will stop the interval with that particular id.
 }
 ```
+
+Next up we're going to take an example to put everything we've learned in this section (Object_methods) together. 
+So head to the app.js file of this particular section for that! 
+
+<hr>
+
+And now, we're going to move on to...
+
+# DOM Manipulation!
+
