@@ -3089,4 +3089,162 @@ Document <~~ This is a javascript object
 All of the above objects have a bunch of properties built in to them. 
 The simplest one is for example what's the text inside of the <li> element (or object) and that property is called innerText. 
 
-epomeno video: "another fun dom example.mp4"
+So, what does **Document** stand for? 
+ - The Document object is our entry point into the world of the DOM. 
+ - It contains representations of ALL the content o a page, plus tons of useful methods and properties.
+
+## Selecting
+
+> Typically we select an element from a webpage and we do something with it...
+
+Some basic methods for that: 
+
+ - getElementById
+ - getElementsByTagName
+ - getElementsByClassName
+
+> **For the examples of this section we're going to use the corresponding files of this section! (app.js, index.html...)**
+
+Now that we've seen the above 3 selectors, we can see the newer one that does what the above 3 did. (for a single element) 
+
+### querySelector 
+
+ - A newer, all-in-one method to select a **single element**
+ - Pass in a **CSS selector**
+
+```javascript
+// finds first h1 element: 
+document.querySelector("h1");
+
+// finds first element with ID of red:
+document.querySelector("#red");
+
+// finds first element with class of: 
+document.querSelector(".big");
+```
+
+Also, there is the **querySelectorAll**, which is the same idea but returns **a collection** of the matching elements.
+
+Moving on to some of the most important properties and methods of the DOM. 
+
+ - classList
+ - createElement
+ - innerText
+ - textContent
+ - innerHTML
+ - value
+ - parentElement
+ - children
+ - nextSibling
+ - previousSibling
+ - style
+ - getAttribute()
+ - setAttribute()
+ - appendChild()
+ - append()
+ - prepend()
+ - removeChild()
+ - remove()
+
+Starting with... How do we get access to a text from an element? How do we get the contents of an element? 
+
+## innerText, textContent
+
+```html
+<h1>qwerty</h1>
+```
+
+if we do: 
+
+```javascript
+const h1 = document.querySelector("h1");
+console.log(h1.innerText); // "qwerty"
+
+// if we want to change the text of the h1 through javascript, we can do: 
+
+h1.innerText = "blablabla";
+
+/**
+ * We also have the textContent property. 
+ * The main difference with the innerText is that 
+ * if we have some extra spaces in our text, or carriage returns (enters) or even let's say for example,
+ * a script tag with some javascript code in it in a paragraph element for example,
+ * if we try to get the text of that paragraph with innerText, we won't have that formatting being showed to the outputted text, neither we'll be able to see the script tag
+ * But, with the textContent, we'll be able to see all of that.
+ * 
+ * Another example is that, if we had inside that paragraph for example a bold tag and that tag had a style of display: none in it, thus the text inside that bold tag would be not displayed in the browser, 
+ * if we get the text with innerText, the text is also gone there as well, but if we get it with textContent, we'll be able to see it!
+*/
+```
+
+## innerHTML
+
+> innerHTML is going to return not only the text from a selected element but also all other tags inside of that given element.
+
+```html
+<section>
+    <ul>
+      <li>
+        qewrty
+      </li>
+      <li class="special">
+        qwertz
+      </li>
+      <li>
+        qwerty
+      </li>
+    </ul>
+  </section>
+```
+
+```javascript
+const section = document.querySelector("section"); 
+console.log(section.innerHTML);
+
+// output: (everything contained inside the section element (including the inner elements) as a string)
+/**
+ * "<ul>
+      <li>
+        qewrty
+      </li>
+      <li class="special">
+        qwertz
+      </li>
+      <li>
+        qwerty
+      </li>
+    </ul>"
+*/
+```
+
+Something interesting we can do with innerHTML is instead of retrieving text as we saw above, we can add text as well back, (as with textContent and innerText) **BUT** a key difference is that we can add actual HTML code with innerHTML back to the page. 
+
+Example: 
+
+```javascript
+// let's say we have this h1 tag in our html file
+<h1>qwerty</h1>
+
+// we can select it in our javascript:
+const h1 = document.querySelector("h1"); 
+
+// we can use innerHTML to add html code inside that h1 tag
+// IMPORTANT NOTE!!! we have to type in the html as a single string
+// and then the browser will parse it and find out that it's an html tag
+// and then create an object for it in the dom tree and then add it as an html tag finally to the site.
+
+h1.innerHTML += "<h2>test</h2>"; 
+
+// notice that we do use += and not just =
+// by using += we append the h2 tag inside the h1 tag so we will now have something like the following: 
+
+<h1>
+  qwerty
+  <h2>test</h2>
+</h1>
+
+// but if we simply did =
+// then we would overwrite the h1 tag to an h2 tag.
+```
+
+epomeno video: "getting and setting attributes.mp4"
