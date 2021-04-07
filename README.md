@@ -3247,4 +3247,88 @@ h1.innerHTML += "<h2>test</h2>";
 // then we would overwrite the h1 tag to an h2 tag.
 ```
 
-epomeno video: "getting and setting attributes.mp4"
+## getAttribute(), setAttribute() 
+
+> these 2 methods allow us to access or change the attributes of HTML elements.
+
+Exampe:
+
+```html
+<!-- consider the following input with the following attributes -->
+<input type="range" min="100", max="500" step="50">
+```
+
+```javascript
+// first we got to select that input:
+const range = document.querySelector('input[type="range"]');
+
+// then we can get the value of one of it's attributes for example: 
+range.getAttribute("max"); // 500
+
+range.getAttrivute("type"); // range
+
+// or we can change the value of one of it's attributes: 
+range.setAttribute("min", "-22");
+```
+
+Next we're going to see the properties which allow you to access the parents or the children or the nearest siblings of a given element.
+
+They allow you to access other elements, based of the current element you're working with.
+
+For example, if a user clicks something on the page (a particular element) then after that click you might want to trigger another element for example.
+
+Another example is that let's say we had checkboxes in a todo list, and when we click a checkbox we want that particular list to be deleted. To do that we need to access the parent element of the input of type checkbox.
+
+> find an example of this to the app.js file
+
+<hr>
+
+Now, let's see how to do what we did so far, but not only in 1 element, but in multiple elements at the same time.
+
+```javascript
+const allLis = document.querySelectorAll("li");
+
+for (let i = 0; i < allLis.length; i++)
+{
+  console.log(allLis[i].innerText); // this way we'll get the inner text of all the li's of the page
+  allLis[i].innerText = "qwerty"; // chaning the innerText of all the li elements of the page to qwerty
+}
+
+// or we can use a for of loop
+for (let li of allLis)
+{
+  li.innerHTML = "qwert<b>y</b>"; // overwriting the current html of all li element's of the page
+}
+```
+
+Next up: 
+
+## Changing styles using JavaScript!!
+
+> We can select 1 element or 20 elements and manipulate their CSS properties to change their color, size, whatever you can do with CSS
+
+Starting, we can use the **style** property to do that, BUT, a very important notice here!
+
+> **We can use the style property to change the styles overall, but if we're trying to use the style property to read existing styles, it won't work, unless those styles are defined inline in the HTML file!**
+
+Keep in mind that we normally use a seperate .css file to apply our styles! 
+
+So, even though we can change the styles in a webpage with the style property, its not a good idea, and we have better ways of doing so. 
+
+But just for demonstration purposes let's look at an example: 
+
+```javascript
+const allLis = document.querySelectorAll("li");
+const colors = ["red", "orange", "yellow", "purple"];
+
+allLis.forEach((li, i) => {
+  const color = colors[i];
+  li.style.color = color;
+});
+```
+
+So the above example will change the colors of the 1st 4 li elements on our webpage to the colors specified, even if we had other colors specified on our styles.css file. 
+Why? 
+Because the style property will add the above colors as an inline css style element inside our html file, which has the higher priority of all the 3 ways of adding styles to a website! 
+
+So, let's now see a different way of accessing style values.

@@ -87,3 +87,32 @@ document.querySelector('input[type="password"]'); // and again this is a valid c
 // Example
 
 console.dir(document.querySelectorAll(".special")); // it will return to us a collection with ALL the elements that have a special class
+
+/**
+ * So here you'll find the example of the parent,children,siblings properties.
+ */
+
+const firstLI = document.querySelector("li");
+console.dir(firstLI); // so if we inspect the firstLI object in the console, we'll find that it has a property called parentElement, and we'll find out that it's value is the <ul> element.
+
+// so we can do the following to find out for a selected element what's his parent: 
+console.log(firstLI.parentElement); // and we'll get the <ul> element here again.
+console.log(firstLI.parentElement.parentElement); // here we'll get the parent of the <ul> element, which in our case is the body of the page. 
+// If we tried one more time, we would get the <html> element which is the parent of the <body> element.
+// And if we tried one more time, we would get null. The <html> tag has no parent.
+
+/**
+ * So next, let's get the children of the ul element
+ */
+
+const ulChildren = document.querySelector("ul");
+console.log(ulChildren.children); // we'll get the 3 li elements in an html collection form.
+
+// if we want the innerText of the first of these li's for example we can do: 
+console.log(ulChildren.children[0].innerText); // "first thing" should be printed.
+
+// And final 2 are next, previous siblings of an element
+
+console.log(firstLI.nextElementSibling); // we should get the second li 
+console.log(firstLI.previousElementSibling); // we get null here, because the first li element has not a previous sibling
+// but if we did the same to the 2nd, or 3rd li element, we should get their previous ones.
