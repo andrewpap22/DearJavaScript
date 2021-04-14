@@ -116,3 +116,26 @@ console.log(ulChildren.children[0].innerText); // "first thing" should be printe
 console.log(firstLI.nextElementSibling); // we should get the second li 
 console.log(firstLI.previousElementSibling); // we get null here, because the first li element has not a previous sibling
 // but if we did the same to the 2nd, or 3rd li element, we should get their previous ones.
+
+
+/**
+ * So here we'll see how we can manipulate the styles with javascript
+ * On our page
+ */
+
+// So first we want to select the first todo class inside the todos id
+// So, we're selecting the 1st li element inside the ul element
+
+const todo = document.querySelector("#todos .todo");
+
+// todo.style.color = "red"; // change it's color
+// todo.style.textDecoration = "line-through";
+// todo.style.opacity = "50%";
+
+/**
+ * Now, as we can see we have 3 lines of code for 3 properties...
+ * Imagine we want to change 30 properties... 
+ * So the best solution is to gather everything we want into a css class and then apply that class to the element we want to be changed.
+ */
+
+todo.classList.add("done");

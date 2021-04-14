@@ -5,3 +5,14 @@ h1 {
 #bear-photo {
   width: 222px;
 }
+
+.todo {
+  font: 30px;
+  color: olive;
+}
+
+.done {
+  color: red;
+  text-decoration: line-through;
+  opacity: 50%;
+}

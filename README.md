@@ -3332,3 +3332,27 @@ Why?
 Because the style property will add the above colors as an inline css style element inside our html file, which has the higher priority of all the 3 ways of adding styles to a website! 
 
 So, let's now see a different way of accessing style values.
+Not to set a value but to retrieve a style value (that we can't do using the style property for the reason explained above.)
+(Remember, the style property contains only the inline styles not the styles from a seperate css file.)
+
+So let's see the: **getComputedStyle** property
+
+```javascript
+/**
+ * So think of the below command being applied to one of your styled li element on the index.html of this section
+*/
+
+// first we select the li
+const li = document.querySelector("li"); // selects the first li of the file
+
+// and then get the styles being applied to that li element
+const styles = getComputedStyle(li);
+```
+
+Now, let's see a better way to add multiple styles at once.
+
+> Head to the app.js file for this
+
+<hr>
+
+next video... "creating elements.mp4"
