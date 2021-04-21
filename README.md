@@ -3355,4 +3355,88 @@ Now, let's see a better way to add multiple styles at once.
 
 <hr>
 
-next video... "creating elements.mp4"
+### Creating elements
+
+> so we can create completely new elements with javascript and then add them to the DOM tree directly
+
+```javascript
+// create an empty h2 element
+const newh2 = document.createElement('h2');
+
+// add contents to the h2 element we created
+newh2.innerText = "I love gym!";
+
+// add a class to our h2
+newh2.classList.add("special");
+
+// and now to append our newly creted h2 header to the DOM of our webpage: 
+// we can use the method appendChild()
+// This method is a method that we call on a parent that we want to append a child element into it.
+// So let's say on our html file o this section, that we want to append our h2 element into our section element
+// first we select the section element and then call the method of the section and pass in the newh2
+const section = document.querySelector("section");
+section.appendChild(newh2);
+
+// and now we should see the h2 element that we created added to the DOM.
+```
+
+> head to the app.js file for some more examples
+
+### A few more methods to add elements to the DOM
+
+**append(), prepend(), insertBefore()**
+
+```javascript
+const parentUL = document.querySelector("ul");
+const newLI = document.createElement("li");
+newLI.innerText = "I'm a new LI";
+parentUL.appendChild(newLI); 
+
+// and we the above lines of code we have a appended a new list element to the DOM of our page at the END of the unordered list (as we previously saw.)
+// But what if we want to append it at the beginning of the list? 
+
+// WE can use insertBefore for that!
+/**
+ * How insert before works: 
+ * We first gotta select the parent, and then select the element we want to insert before it!
+ * So: 
+*/
+const firstLI = document.querySelector("li"); 
+parentUL.insertBefore(newLI, firstLI); // Insert the new li element before the first Li of the UL element which is the parent of the firstLi
+
+// Now we have the append() method. 
+// With append() we can insert multiple elements at once. 
+// Same usage as the appendChild() with the difference that we can insert multiple elements instead of just one. 
+// And the prepend() method does exactly the same with the only diffrence that it will add the new elements at the beginning instead of the end.
+```
+
+#### removeChild() and remove()
+
+These 2 are similar to appendChild() and append(). 
+
+> append() and remove() are not supported by InternetExplorer (xD)
+
+```javascript
+// selecting the ul element which is inside the frist section of our page 
+const ul = document.querySelector("section ul");
+
+// select the first element with a class of special inside the ul element
+const removeMe = ul.querySelector(".special");
+
+// delete that selected element from the DOM and save it to a variable for later use if needed
+const deleted = ul.removeChild(removeMe)
+
+/**
+ * And then, we have the remove method, which we can call on the actual element that we want to remove. (we don't have to select any parent or anything else...)
+ * So let's say we want to simply remove an h1 element:
+*/
+const h1 = document.querySelector("h1");
+const deletedHeader = h1.remove();
+```
+
+> **At this point we're going to make a little project with what we've learned so far!**
+> Head to the corresponding directory to find the files of the project of this section!
+
+<hr>
+
+## Next up: DOM Events!!!

@@ -139,3 +139,25 @@ const todo = document.querySelector("#todos .todo");
  */
 
 todo.classList.add("done");
+
+// -----------------------------------------------------------------------------------------
+
+/**
+ * So, hre we'll find some more examples on how to create elements and add them to the DOM
+ */
+
+
+
+const newImg = document.createElement("img");
+newImg.src = "https://media.istockphoto.com/photos/programming-source-code-abstract-background-picture-id1047259374?k=6&m=1047259374&s=612x612&w=0&h=nG_krpdg_SonwCnxIOYShVLEidbLvukG9YrBUsRqVEQ=";
+document.body.appendChild(newImg);
+
+// and after these 3 lines of code we can see that we have appended a new img on our webpage
+
+const newLink = document.createElement("a");
+newLink.innerText = "a random video";
+newLink.href = "https://www.youtube.com/watch?v=J1z4XqEkSEU";
+const firstP = document.querySelector("p");
+firstP.appendChild(newLink);
+
+// and now we've added a link of a youtube video in our already first p element that we had.
