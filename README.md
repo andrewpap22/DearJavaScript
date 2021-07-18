@@ -3440,3 +3440,25 @@ const deletedHeader = h1.remove();
 <hr>
 
 ## Next up: DOM Events!!!
+
+> So basically how Events work is: You have an HTML element that you want to "listen what happens to it" i.e. the event type (for example: click, mousover, drag, etc...) and then the code to run after the specific event
+
+The HTML Element | The Event Type | The code to run
+---------|----------|---------
+ button | click | change the color
+ input | hits enter | get search results
+ image | mouseover | display the img caption, or make the image black and white
+
+### addEventListener
+
+> Specify the event type and a callback to run 
+
+```javascript
+const button = document.querySelector('h1');
+
+button.addEventListener('click', () => {
+  alert("You clicked me!!");
+});
+```
+
+next video is: the impossible button demo.
