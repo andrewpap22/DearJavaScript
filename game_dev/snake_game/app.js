@@ -110,6 +110,49 @@ let drawFood = function (f, i) {
     ctx.restore();
 };
 
+// update the potition of the snake based on the user's input.
+
+let updateSnakeList = function () {
+    for (let i = snakeList.length - 1; i >= 0; i--) {
+        if (direction === 0) {
+            if (i === 0) {
+                snakeList[i].x = snakeList[i].x - 5;
+            }
+            else {
+                snakeList[i].x = snakeList[i-1].x;
+                snakeList[i].y = snakeList[i-1].y;
+            }
+        } 
+        else if (direction === 1) {
+            if (i === 0) {
+                snakeList[i].y = snakeList[i].y - 5;
+            }
+            else {
+                snakeList[i].x = snakeList[i-1].x;
+                snakeList[i].y = snakeList[i-1].y;
+            }
+        }
+        else if (direction === 2) {
+            if (i === 0) {
+                snakeList[i].x = snakeList[i].x + 5;
+            }
+            else {
+                snakeList[i].x = snakeList[i-1].x;
+                snakeList[i].y = snakeList[i-1].y;
+            }
+        }
+        else if (direction === 3) {
+            if (i === 0) {
+                snakeList[i].y = snakeList[i].y + 5;
+            }
+            else {
+                snakeList[i].x = snakeList[i-1].x;
+                snakeList[i].y = snakeList[i-1].y;
+            }
+        }
+    };
+};
+
 // entry point function of our game
 
 let startGame = function () {

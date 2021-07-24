@@ -309,3 +309,130 @@ After calling the `startGame()` function at the end of the file we should see ou
 > next up we're going to set the user inputs
 
 ## ⌨️ User inputs
+
+After drawing our snake we might want to be able to move it right? So that the user can use his keyboard ⬆️⬇️⬅️➡️ keys or his `WASD` keys to control the snake. 
+
+The following code does exactly that: 
+
+```javascript
+
+let direction;
+
+/** The following function will monitor what button the user presses on his keyboard and then, 
+ * we will map the WASD, arrow keys to be able to get used to control the movement of our snake. 
+ * The mapping is the following: 
+ * 
+ * 0 - snake will go left
+ * 1 - snake will go up 
+ * 2 - snake will go right
+ * 3 - snake will go down
+ */
+
+document.onkeydown = function (event) {
+
+    // left arrow key
+    if (event.key === "ArrowLeft") {
+        direction = 0;
+        console.log("0");
+    } 
+    // up arrow key
+    else if (event.key === "ArrowUp") {
+        direction = 1;
+        console.log("1");
+    }
+    // right arrow key
+    else if (event.key === "ArrowRight") {
+        direction = 2;
+        console.log("2");
+    }
+    // down arrow key
+    else if (event.key === "ArrowDown") {
+        direction = 3;
+        console.log("3");
+    }
+
+    // a,A
+    if (event.key === "a" || "A") {
+        direction = 0;
+        console.log("0");
+    } 
+    // w,W
+    else if (event.key === "w" || "W") {
+        direction = 1;
+        console.log("1");
+    }
+    // d,D
+    else if (event.key === "d" || "D") {
+        direction = 2;
+        console.log("2");
+    }
+    // s,S
+    else if (event.key === "s" || "S") {
+        direction = 3;
+        console.log("3");
+    }
+};
+
+```
+
+I think the code itself here is pretty self explanatory but in case you need more information (probably about event handling and DOM manipulation in JavaScript) then a really good resource is the following: 
+[Events](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events)
+
+> next up we're going to update the snake's position based on the user's input
+
+## Update The 🐍 Position
+
+So, we keep adding functions to our app.js file to add extra functionality for our game. For really large applications best practise would be to split our different functions in many JavaScript files and import them in a `main` JavaScript file so that the code becomes more modular and readable. But since this is just a simple snake game for simplicity purposes we will keep everything into our initial `app.js` file, but feel free to split it into multiple ones if you wish to do so. 
+
+So our new function that updates the position of our snake based on the key that the user has pressed is the following: 
+
+```javascript
+
+// update the potition of the snake based on the user's input.
+
+let updateSnakeList = function () {
+    for (let i = snakeList.length - 1; i >= 0; i--) {
+        if (direction === 0) {
+            if (i === 0) {
+                snakeList[i].x = snakeList[i].x - 5;
+            }
+            else {
+                snakeList[i].x = snakeList[i-1].x;
+                snakeList[i].y = snakeList[i-1].y;
+            }
+        } 
+        else if (direction === 1) {
+            if (i === 0) {
+                snakeList[i].y = snakeList[i].y - 5;
+            }
+            else {
+                snakeList[i].x = snakeList[i-1].x;
+                snakeList[i].y = snakeList[i-1].y;
+            }
+        }
+        else if (direction === 2) {
+            if (i === 0) {
+                snakeList[i].x = snakeList[i].x + 5;
+            }
+            else {
+                snakeList[i].x = snakeList[i-1].x;
+                snakeList[i].y = snakeList[i-1].y;
+            }
+        }
+        else if (direction === 3) {
+            if (i === 0) {
+                snakeList[i].y = snakeList[i].y + 5;
+            }
+            else {
+                snakeList[i].x = snakeList[i-1].x;
+                snakeList[i].y = snakeList[i-1].y;
+            }
+        }
+    };
+};
+
+```
+
+`Explanations:`
+
+So, first of all you will notice that we are implementing a for loop for our `snakeList` by we are iterating backwards. Why is that? 
