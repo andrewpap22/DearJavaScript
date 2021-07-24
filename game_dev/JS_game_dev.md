@@ -87,3 +87,225 @@ ctx.restore(); // restoring the saved state of the canvas so the below text will
 
 ctx.fillText("Some more text", 200, 400);
 ```
+
+> Next up we're going to build our very first snake game in 🍦 JavaScript and render it in HTML5 canvas element!
+
+## 🐍 Snake Game! 
+
+So first of all we gotta 'initialize' our project and the structure for this one will be pretty simple, we'll have a directory called: `snake_game` and inside that directory we'll have 3 files, 
+ 1. index.html
+ 2. app.js
+ 3. styles.css
+
+The initial code for the setup of our little 🐍 game of the above 3 mentioned files, as we saw in the introduction to canvas will look like the following: 
+
+`index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+
+    <!-- Favicon -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAD9/f0AAAAAAP///wDx8fEA+vr6APz8/ADu7u4A/v7+APDw8AD5+fkA8vLyAAwM6AD7+/sAAAAAAAAAAAAAAAAAEREREREREREREbuxG7sRERERsRuxGxEREREbsRuxERERZxERERFAEREmEREREagREREYK7YhERERESUSYWIRERFnaBYhJkAREVFZNTU1GhEREcERERwRERERG3Z2sRERERG7u7u7EREREbu7u7sRERERG7u7sRERERERERERERHxjwAA4AcAAOAHAADAAwAAgAEAAIABAADAAwAAwAMAAIABAACAAQAAwAMAAMADAADgBwAA4AcAAPAPAAD4HwAA" rel="icon" type="image/x-icon" />
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <canvas height="500" width="500" id="ctx"></canvas>
+    
+    <script src="./app.js"></script>
+</body>
+</html>
+```
+
+`styles.css`
+
+```css
+#ctx {
+    border: 2px solid #000000;
+}
+```
+
+`app.js`
+
+```javascript
+let ctx = document.getElementById("ctx").getContext("2d");
+
+ctx.fillText("checking if your canvas is working properly", 150, 200);
+```
+
+> Next up we're going to declare the objects of our game
+
+### Declaring the objects of the 🐍 game.
+
+So, next, adding up to our `app.js` file, we're going to declare our game objects as well as some needed variables throughout our game. 
+
+```javascript
+let ctx = document.getElementById("ctx").getContext("2d");
+
+// setting the width and the height as variables inside our js so we don't have to access them from the canvas element each time that we might need them
+
+let WIDTH = 500;
+let HEIGHT = 500;
+
+ctx.font = "20px Calibri";
+
+// Setting our snake, food objects
+
+let snakeBody = {
+    width: 20,
+    height: 20
+};
+
+let food = {
+    width: 20,
+    height: 20
+}
+```
+
+`Explanations:`
+
+ 1. Why do we declare our width and height variables inside our javascript file, when we already got em in our canvas element? 
+
+The reason for that is that later on we might want to access many times inside our game those 2 variables, so instead of getting them from our canvas element, we simply do re-create them as variables inside our `.js` file since it is more convenient. 
+
+ 2. Why the called our snake object snakeBody and not simply snake and why do both our objects have set width and height but not set x,y positions on our canvas? 
+
+The reason we called our snakeBody object as is, is because our snake will not be a huge rectangle initily but instead it will be a little square and each time it eats a food it will grow +1 square. 
+So our snake as it grows up, will be a sum of multiple squares, instead of 1 big rectangle. 
+
+Usually we want to keep our stable properties, i.e. properties that are not going to change throughout the game (think constants) inside our objects, and the actualy stuff that are going to change throughout the game outside of them. For example the x,y coordinates for the food will change every time the snake eats one food, because it will spawn on a random place (i.e. random x,y) on our canvas. 
+
+And finally we simply change our font size and the font family for the score that we're going to keep track of as the snake eats the food.
+
+> moving on to initializing our snake, food objects. 
+
+So, next up in our `app.js` file, we did create our `startGame` function which will be our entry point in our game. Usually in this function we initialize all of our variables that we need for our game and it's usually the one function that we want to call each time that we want to start, restart our game from the beggining. 
+
+The code up until now with the added stuff looks like the following: 
+
+```javascript
+let ctx = document.getElementById("ctx").getContext("2d");
+
+// setting the width and the height as variables inside our js so we don't have to access them from the canvas element each time that we might need them
+
+let WIDTH = 500;
+let HEIGHT = 500;
+
+ctx.font = "20px Calibri";
+
+// Setting our snake, food objects
+
+let snakeBody = {
+    width: 20,
+    height: 20
+};
+
+let food = {
+    width: 20,
+    height: 20
+}
+
+// those 2 will be needed to contain all the snake bodies, foods
+let snakeList;
+let foodList; 
+
+// entry point function of our game 
+
+startGame = function () {
+  
+  // initializing our snake 
+  snakeList = [
+      {
+        x: 220, y:200 // position of the 1st part of the snake body
+      },
+      {
+        x: 210, y:200 // of the 2nd one
+      },
+      {
+        x: 200, y:200 // of the 3rd one
+      }            
+  ];
+  
+
+  // We're not going to set an initial fixed position for the food, because we want to spawn randomly in our map
+  foodList = []; 
+};
+
+```
+
+Hopefully the comments in the code do help with the understanding of how the code itself works a bit better, but the important thing to keep in mind here is that we
+initialized our snake to have a 3 square body long being spawned when we start the game at the desired specific x,y coordinates on our canvas. 
+We also kept the foodList empty, because we will later on implement a function to make it spawn randomly each time we start, re-start our game, or each time that the snake eats the food.
+
+> next up we will draw our snake to the canvas
+
+## Drawing the 🐍
+
+So, the following additional function in our code will be used to draw our little snake on our canvas. 
+
+```javascript
+
+let drawSnake = function (sb, i) {
+    ctx.save();
+
+    if (i === 0) {
+        ctx.fillStyle = "brown"; // will make the snake's head brown
+    } else {
+        ctx.fillStyle = snakeBody.color; // will make the rest of the body green
+    } 
+
+    ctx.fillRect(sb.x, sb.y, snakeBody.width, snakeBody.height);
+
+    ctx.restore();
+};
+
+```
+
+`Explanations:`
+
+First of all, remember from our cavas state section, we learned that every time we want to make modifications to our canvas object it is best coding practise to make it in between the `save()`, `restore()` methods.
+Next, we use the `if else` statement to draw differently the head of the snake and the rest of it's body. The way this works is, that we iterate with the `snakeList` and we store on the `i` parameter it's first object,
+which we assumed to be the head of the snake. And then similarly we do draw with the `fillRect()` method as we've seen before our whole snake based on it's x,y coordinates that we have set on our `snakeList` variable. 
+
+So, our `startGame` function now looks like this: 
+
+```javascript
+let startGame = function () {
+  // initializing our snake
+  snakeList = [
+    {
+      x: 220,
+      y: 200, // position of the 1st part of the snake body i.e. it's head
+    },
+    {
+      x: 210,
+      y: 200, // of the 2nd one
+    },
+    {
+      x: 200,
+      y: 200, // of the 3rd one
+    },
+  ];
+
+  // We're not going to set an initial fixed position for the food, because we want to spawn randomly in our map
+  foodList = [];
+
+  snakeList.forEach(drawSnake);
+};
+
+// start the game 
+
+startGame();
+```
+
+After calling the `startGame()` function at the end of the file we should see our snake, be drawn on the canvas
+
+> next up we're going to set the user inputs
+
+## ⌨️ User inputs
