@@ -392,6 +392,7 @@ So our new function that updates the position of our snake based on the key that
 
 let updateSnakeList = function () {
     for (let i = snakeList.length - 1; i >= 0; i--) {
+        // check the direction of the snake ( left, right, top, down )
         if (direction === 0) {
             if (i === 0) {
                 snakeList[i].x = snakeList[i].x - 5;
@@ -435,4 +436,5 @@ let updateSnakeList = function () {
 
 `Explanations:`
 
-So, first of all you will notice that we are implementing a for loop for our `snakeList` by we are iterating backwards. Why is that? 
+So, first of all you will notice that we are implementing a for loop for our `snakeList` but we are iterating backwards. Why is that?
+ 
